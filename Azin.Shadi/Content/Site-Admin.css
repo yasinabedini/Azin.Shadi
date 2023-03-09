@@ -299,8 +299,8 @@ main section:first-child div:nth-child(7):hover {
 .createProduct {
     background-color: lightgray;
     padding: 10px;
-    width: 25%;
-    margin: 40px auto;
+    width: 25%;    
+    margin-top:80px;
     margin-right: 730px;
 }
 

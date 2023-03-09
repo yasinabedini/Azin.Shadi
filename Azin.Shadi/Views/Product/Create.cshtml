@@ -1,11 +1,9 @@
-﻿@model Azin.Shadi.Models.T_product
+﻿@model Azin.Shadi.Models.ViewModels.RegisterProductViewModel
 
 @{
-    ViewBag.Title = "ثبت نام محصول";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";  
+    ViewBag.Title = "ثبت نام محصول جدید";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2>Create</h2>
 
 
 @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -71,9 +69,9 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
