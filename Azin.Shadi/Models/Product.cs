@@ -51,7 +51,6 @@ namespace Azin.Shadi.Models
         [Display(Name = "تاریخ ثبت نام")]
         [DisplayFormat(DataFormatString = "{0: dddd, dd MMMM yyyy}")]
         public System.DateTime RegisterDate { get; set; }
-
-        public Product() { }
+        
     }
 }

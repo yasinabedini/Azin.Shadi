@@ -1,4 +1,4 @@
-﻿@model Azin.Shadi.Models.T_product
+﻿@model Azin.Shadi.Models.Product
 
 @{
     ViewBag.Title = "ویرایش " + Model.Name;
@@ -115,7 +115,7 @@
             </tr>
         </table>
     </div>
-    @Html.ActionLink("لیست محصولات", "Index", null, new { @class = "btn btn-primary", @style = "margin-right:465px" })    
+    @Html.ActionLink("لیست محصولات", "Index", null, new { @class = "btn btn-primary", @style = "margin-right:465px" })
     <input type="submit" value="ویرایش @Model.Name" class="btn btn-warning" />
 }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Azin.Shadi.Models;
+using Azin.Shadi.Models.ViewModels;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
@@ -34,7 +35,7 @@ namespace Azin.Shadi.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,Category,Brand,Price,Inventory")] Product product, HttpPostedFileBase imageName)
+        public ActionResult Create([Bind(Include = "Name,Category,Brand,Price,Inventory")] RegisterProductViewModel product, HttpPostedFileBase imageName)
         {
             if (ModelState.IsValid)
             {
@@ -57,24 +58,25 @@ namespace Azin.Shadi.Controllers
                     imageNameInfo = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(imageName.FileName);
                     imageName.SaveAs(Server.MapPath("/Images/ProductImage/" + imageNameInfo));
                 }
-                product.ImageName = imageNameInfo;
 
+                bool inventoryStatus = true;
+                if (product.Inventory <= 0)
+                {
+                    inventoryStatus = false;
+                }
 
-                if (product.Brand == "" || product.Brand == null)
+                db.Products.Add(new Product()
                 {
-                    product.Brand = "";
-                }
-                if (product.Inventory > 0)
-                {
-                    product.InventoryStatus = true;
-                }
-                else
-                {
-                    product.InventoryStatus = false;
-                }
-                product.RegisterDate = DateTime.Now;
-                product.IsActive = true;
-                db.Products.Add(product);
+                    Name = product.Name,
+                    Brand = product.Brand,
+                    Category = product.Category,
+                    Inventory = product.Inventory,
+                    InventoryStatus = inventoryStatus,
+                    IsActive = true,
+                    Price = product.Price,
+                    RegisterDate = DateTime.Now,
+                    ImageName = imageNameInfo
+                });
                 db.SaveChanges();
                 return RedirectToAction("index");
             }
@@ -207,7 +209,7 @@ namespace Azin.Shadi.Controllers
 
         [HttpGet]
         public ActionResult Search(string Search)
-        {            
+        {
             if (!db.Products.Any(t => t.Name.TrimEnd().Contains(Search.Trim())))
             {
                 return HttpNotFound();
