@@ -1,4 +1,4 @@
-﻿namespace Azin.Shadi.Migrations
+namespace Azin.Shadi.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -43,10 +43,30 @@
                     })
                 .PrimaryKey(t => t.id);
             
+            CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        Family = c.String(nullable: false),
+                        Username = c.String(),
+                        Password = c.String(nullable: false),
+                        Eamil = c.String(),
+                        Mobile = c.String(nullable: false),
+                        Wallet_Balance = c.Int(nullable: false),
+                        RegisterDate = c.DateTime(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
+                        LastLoginDate = c.DateTime(),
+                        ImageName = c.String(),
+                    })
+                .PrimaryKey(t => t.id);
+            
         }
         
         public override void Down()
         {
+            DropTable("dbo.Users");
             DropTable("dbo.Products");
             DropTable("dbo.Admins");
         }
