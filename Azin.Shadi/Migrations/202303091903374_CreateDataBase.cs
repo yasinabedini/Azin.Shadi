@@ -27,6 +27,15 @@ namespace Azin.Shadi.Migrations
                 .PrimaryKey(t => t.id);
             
             CreateTable(
+                "dbo.ProductCategories",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Products",
                 c => new
                     {
@@ -68,6 +77,7 @@ namespace Azin.Shadi.Migrations
         {
             DropTable("dbo.Users");
             DropTable("dbo.Products");
+            DropTable("dbo.ProductCategories");
             DropTable("dbo.Admins");
         }
     }

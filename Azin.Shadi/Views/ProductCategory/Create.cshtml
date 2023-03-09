@@ -1,0 +1,35 @@
+﻿@model Azin.Shadi.Models.ProductCategory
+
+@{
+    ViewBag.Title = "دسته بندی جدید";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "ProductCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal createProduct" style="border-radius:10px; margin-top:17%">
+        <h4 class="text-center">افزودن دسته بندی جدید</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control mb-4" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="ثبت دسته بندی" class="btn btn-success mt-2" style="margin-right:33px"/>
+        </div>
+        <div>
+            @Html.ActionLink(" لیست دسته بندی", "Index", "productcategory", new { @class = "btn btn-success mt-2" })
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

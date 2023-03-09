@@ -180,14 +180,15 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303091449436_CreateDataBase.cs" />
-    <Compile Include="Migrations\202303091449436_CreateDataBase.Designer.cs">
-      <DependentUpon>202303091449436_CreateDataBase.cs</DependentUpon>
+    <Compile Include="Migrations\202303091903374_CreateDataBase.cs" />
+    <Compile Include="Migrations\202303091903374_CreateDataBase.Designer.cs">
+      <DependentUpon>202303091903374_CreateDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -251,6 +252,11 @@
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\ProductCategory\Create.cshtml" />
+    <Content Include="Views\ProductCategory\Delete.cshtml" />
+    <Content Include="Views\ProductCategory\Details.cshtml" />
+    <Content Include="Views\ProductCategory\Edit.cshtml" />
+    <Content Include="Views\ProductCategory\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -265,8 +271,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202303091449436_CreateDataBase.resx">
-      <DependentUpon>202303091449436_CreateDataBase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202303091903374_CreateDataBase.resx">
+      <DependentUpon>202303091903374_CreateDataBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
