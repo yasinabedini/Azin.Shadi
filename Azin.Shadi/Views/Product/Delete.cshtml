@@ -1,0 +1,22 @@
+﻿@model Azin.Shadi.Models.T_product
+
+@{
+    ViewBag.Title = $"حذف {Model.Name}";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="adminProductDetalis mt-5">
+    <div>
+        @Html.Partial("_DetailsProduct", Model)
+    </div>
+    @using (Html.BeginForm("Delete", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <p style="font-size:17px;font-weight:500;margin-right:465px;color:darkred">آیا از حذف کالای @Model.Name مطمئن هستید ؟</p>
+
+        <input type="submit" value="حذف @Model.Name" style=" Margin-right:465px;" class="btn btn-danger" />
+        @Html.ActionLink("لیست محصولات", "Index", null, new { @class = "btn btn-primary" })
+
+    }
+</div>

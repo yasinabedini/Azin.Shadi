@@ -1,0 +1,61 @@
+﻿@model Azin.Shadi.Models.T_product
+
+<table class="table table-borderless shadow">
+    <tr>
+        <td class="text-center" colspan="4">@Model.Name </td>
+    </tr>
+    <tr>
+        <td class="col-2 form-label">@Html.DisplayNameFor(model => model.Name) :</td>
+        <td class="col-4 form-control">@Html.DisplayFor(model => model.Name)</td>
+        <td class="col-2 form-label">@Html.DisplayNameFor(model => model.Category) :</td>
+        <td class="col-4 form-control">@Html.DisplayFor(model => model.Category)</td>
+    </tr>
+    <tr>
+        <td class="col-2 form-label">@Html.DisplayNameFor(model => model.Brand) :</td>
+        <td class="col-4 form-control">
+            @if (Model.Brand == "")
+            {
+                <span>______</span>
+            }
+            @Html.DisplayFor(model => model.Brand)
+        </td>
+        <td class="col-2 form-label">@Html.DisplayNameFor(model => model.Price) :</td>
+        <td class="col-4 form-control">@Html.DisplayFor(model => model.Price)</td>
+    </tr>
+    <tr>
+        <td class="col-2 form-label">@Html.DisplayNameFor(model => model.Inventory) :</td>
+        <td class="col-4 form-control">@Html.DisplayFor(model => model.Inventory)</td>
+        <td class="col-2 form-label">@Html.DisplayNameFor(model => model.InventoryStatus) :</td>
+        <td class="col-4 form-control">
+            @if (Model.InventoryStatus == true)
+            {
+                <span style="color:green">موجود <i class="bi bi-check2"></i></span>
+            }
+            else
+            {
+                <span style="color:red">ناموجود <i class="bi bi-x"></i></span>
+            }
+        </td>
+    </tr>
+    <tr>
+        <td class="col-2 form-label">@Html.DisplayNameFor(model => model.RegisterDate) :</td>
+        <td class="col-4 form-control">@Html.DisplayFor(model => model.RegisterDate)</td>
+        <td class="col-2 form-label">@Html.DisplayNameFor(model => model.IsActive) :</td>
+        <td class="col-4 form-control">
+            @if (Model.IsActive == true)
+            {
+                <span style="color:green">فعال <i class="bi bi-check2"></i></span>
+            }
+            else
+            {
+                <span style="color:red">غیرفعال <i class="bi bi-x"></i></span>
+            }
+        </td>
+    </tr>
+    <tr>
+        <td style="padding-top:45px" class="col-2  form-label">@Html.DisplayNameFor(model => model.ImageName) :</td>
+        <td class="pb-4">
+            <img class="productimages" src="~/Images/ProductImage/@Model.ImageName" />
+        </td>
+    </tr>   
+</table>

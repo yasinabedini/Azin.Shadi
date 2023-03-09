@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "ثبت نام";
+}
+
+<div>
+    <form style="height:460px; margin-bottom:73px" class="signInUserForm container-fluid shadow" action="/Home/signinuser" method="post" enctype="multipart/form-data" autocomplete="off">
+        <table class="table">
+
+            <tr class="text-center pb-5">
+                <td colspan="2" style="font-size:32px" class="fw-bold container">AZIN.SHADI</td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="border: 0px none white; padding-top:10px; margin-right:-10px" class="justify-content-end mt-5">
+                    <a href="/home/Signinuserpanel" style="padding-right:40px; color:black;">ورود</a>
+                    <p>|</p>
+                    <a href="/home/SignUpUserPanel" style="font-size: 20px">ثبت نام</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="border: 0px none white; padding-top:5px; margin-right:-10px" class="justify-content-end mt-5">
+                    <label style="font-size:12px;">سلام!<br />لطفا برای ثبت نام موبایل و رمز عبور خود را وارد کنید</label>
+                </td>
+            </tr>
+
+            <tr style="border:0px none white;">
+                <td class="pt-4"><label>شماره موبایل:</label></td>
+                <td class="pt-4"><input type="text" class="form-control" /></td>
+            </tr>
+
+            <tr style="border:0px none white">
+                <td class="pt-4"><label>رمز عبور:</label></td>
+                <td class="pt-4"><input type="password" class="form-control" /></td>
+            </tr>
+            <tr style="border:0px none white">
+                <td class="pt-4"><label>تکرار رمز عبور:</label></td>
+                <td class="pt-4"><input type="password" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-right:47px; border: 0px none white">
+                    <input type="submit" class="btn btn-danger" style="width:335px; height:45px; font-size:20px;margin-top:15px" value="ثبت نام" />
+                </td>
+            </tr>           
+        </table>
+    </form>
+</div>
+

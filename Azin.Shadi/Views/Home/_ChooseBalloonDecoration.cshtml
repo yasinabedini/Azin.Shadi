@@ -1,0 +1,23 @@
+﻿<form class="RightNav" autocomplete="off" action="/home/Balloondecoration">
+    <p>سفارش بادکنک آرایی</p>
+    <label>نام و نام خانوادگی خود را وارد کنید : </label>
+    <input type="text" class="form-control" id="name" name="Name" />
+    <label>شماره تماس خود را وارد کنید :</label>
+    <input type="tel" class="form-control" id="mobile" name="Mobile" />
+    <br />
+    <select class="form-select" id="model" name="Model">
+        <option hidden>مدل بادکنک آرایی را انتخاب کنید</option>
+        <option>بادکنک آرایی روی حلقه</option>
+        <option>بادکنک آرایی با هلیوم</option>
+        <option>بادکنک آرایی ساده</option>
+        <option>سایر موارد</option>
+    </select>
+    <label>حداقل قیمت (تومان:)</label>
+    <input type="number" min="50000" step="1000" class="form-control ms-3" style="display:inline; width:123px" id="minPrice" name="MinPrice" />
+    <label>حداکثر قیمت (تومان:)</label>
+    <input type="number" class="form-control ms-3" style="display:inline; width:123px" id="maxPrice" name="MaxPrice" />
+    <label>مدل موردنظر : </label>
+    <input type="number" max="15" min="1" step="1" class="form-control" style="width:123px;margin-right:63.5px; display:inline" id="modelNumber" name="ModelNumber" />
+    <label style="font-size:11px;margin-top:10px;margin-bottom:10px;text-decoration:underline gray">در صورت ثبت سفارش به زودی با شما تماس گرفته خواهد شد</label>
+    <input type="submit" value="ثبت سفارش" class="btn btn-success" />
+</form>

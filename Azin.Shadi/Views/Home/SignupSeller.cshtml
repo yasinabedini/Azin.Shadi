@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "ثبت نام";
+}
+
+<section class=" mt-5 me-4">
+    <div style="padding:15px; width:400px;border:2px solid lightgray; border-radius:10px" class="bg-light shadow container pt-4" >
+        <h3 class="fw-bold text-center border-secondary">ثبت نام به عنوان فروشنده</h3>
+    </div>
+
+    <form style="border-radius: 10px; width: 1000px; margin-top: 50px; background-color: white " class="container-fluid shadow signUpSeller" action="/Home/signinuser" method="post" enctype="multipart/form-data" autocomplete="off">
+        <table class="align-content-center container table">
+
+            <tr>
+                <th>اطلاعات هویتی</th>
+            </tr>
+            <tr>
+                <td class="HeadTd">
+
+                    <label>نام: </label>
+                </td>
+                <td>
+                    <input type="text" title="این یک فیلد اجباری است" class="form-control" id="firstName" name="FirstName" placeholder="لطفا نام خود را وارد کنید" required />
+                </td>
+
+                <td class="HeadTd">
+                    <label>نام خانوادگی: </label>
+                </td>
+                <td>
+                    <input type="text" title="این یک فیلد اجباری است" class="form-control" id="lastName" name="LastName" placeholder="لطفا نام خانوادگی خود را وارد کنید" required />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="HeadTd">
+                    <label>نام پدر: </label>
+                </td>
+                <td>
+                    <input type="text" title="این یک فیلد اختیاری است" autocomplete="off" class="form-control" id="fatherName" name="FatherName" placeholder="لطفا نام پدر خود را وارد کنید" />
+                </td>
+                <td class="HeadTd">
+                    <label>کد ملی: </label>
+                </td>
+                <td>
+                    <input type="text" maxlength="10" title="این یک فیلد اختیاری است" class="form-control" id="nationalCode" name="NationalCode" placeholder="لطفا کد ملی خود را وارد کنید" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="HeadTd">
+                    <label>تاریخ تولد: </label>
+                </td>
+                <td>
+                    <input type="date" title="این یک فیلد اختیاری است" maxlength="13" class="form-control" id="birthDate" name="BirthDate" placeholder="لطفا شماره همراه خود را وارد کنید" />
+                </td>
+                <td class="HeadTd">
+                    <label>جنسیت: </label>
+                </td>
+                <td>
+                    <select class="form-control" required title="این یک فیلد اجباری است" id="gender" name="Gender">
+                        <option hidden selected>لطفا جنیست خود را وارد کنید</option>
+                        <option value="1">مرد</option>
+                        <option value="0">زن</option>
+                    </select>
+                </td>
+            </tr>
+
+            @*--------------------------------------------------------------------------*@
+
+            <tr>
+                <th>اطلاعات کاربری</th>
+            </tr>
+
+            <tr>
+                <td class="HeadTd">
+                    <label>نام کاربری: </label>
+                </td>
+                <td><input type="text" autocomplete="off" class="form-control" title="این یک فیلد اجباری است" id="userName" name="UserName" placeholder="لطفا نام کاربری خود را وارد کنید" required /></td>
+                <td class="HeadTd">
+                    <label style="font-size:15px">عکس پروفایل:</label>
+                </td>
+                <td><input type="file" accept="image/*" title="این یک فیلد اجباری است" id="profilePicture" name="ProfilePicture" class="form-control" required /></td>
+            </tr>
+
+            <tr>
+                <td class="HeadTd">
+                    <label>رمز عبور: </label>
+                </td>
+                <td>
+                    <input type="password" title="این یک فیلد اجباری است" " class="form-control" id="Password" name="password" placeholder="لطفا شماره همراه خود را وارد کنید" required />
+                </td>
+                <td class="HeadTd">
+                    <label>تکرار رمز عبور: </label>
+                </td>
+                <td>
+                    <input type="password" title="این یک فیلد اجباری است" class="form-control" id="repaetPassword" name="RepaetPassword" placeholder="لطفا نام کاربری خود را وارد کنید" required />
+                </td>
+            </tr>
+
+            @*--------------------------------------------------------------------------*@
+
+            <tr>
+                <th>اطلاعات ارتباطی</th>
+            </tr>
+
+            <tr>
+                <td class="HeadTd">
+                    <label>شماره همراه: </label>
+                </td>
+                <td>
+                    <input type="tel" maxlength="12" title="این یک فیلد اجباری است" class="form-control" id="mobile" name="Mobile" placeholder="لطفا شماره همراه خود را وارد کنید" required />
+                </td>
+                <td class="HeadTd">
+                    <label>آدرس ایمیل: </label>
+                </td>
+                <td>
+                    <input type="email" title="این یک فیلد اختیاری است" class="form-control" id="emali" name="Emali" placeholder="لطفا ایمیل خود را وارد کنید" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="HeadTd">
+                    <label>محل سکونت:</label>
+                </td>
+                <td>
+                    <select class="form-control" name="HomeCity" id="homeCity">
+                        <option selected hidden>محل سکونت خود را انتخاب کنید</option>
+                        <optgroup label="یزد">
+                            <option value="0">یزد</option>
+                            <option value="1">تفت</option>
+                            <option value="2">اردکان</option>
+                            <option value="3">میبد</option>
+                            <option value="4">بافق</option>
+                        </optgroup>
+                        <optgroup label="تهران">
+                            <option value="5">تهران</option>
+                            <option value="6">کرج</option>
+                            <option value="7">البرز</option>
+                        </optgroup>
+                        <optgroup label="اصفهان">
+                            <option vlaue="8">اصفهان</option>
+                            <option vlaue="9">کاشان</option>
+                            <option vlaue="10">خمینی شهر</option>
+                        </optgroup>
+                        <optgroup label="فارس">
+                            <option value="11">شیراز</option>
+                            <option value="12">بندر عباس</option>
+                            <option value="13">بندر انزلی</option>
+                        </optgroup>
+                        <optgroup label="قم">
+                            <option value="14">قم</option>
+                            <option value="15">کهک</option>
+                            <option value="16">جعفریه</option>
+                        </optgroup>
+                        <optgroup label="خراسان رضوی">
+                            <option value="17">مشهد</option>
+                            <option value="18">تربت حیدریه</option>
+                            <option value="19">تربت جام</option>
+                            <option value="20">گناباد</option>
+                            <option value="21">فردوس</option>
+                        </optgroup>
+                    </select>
+                </td>
+                <td class="HeadTd">
+                    <label>کد پستی:</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="postCode" name="PostCode" placeholder="کد پستی خود را وارد کنید" />
+                </td>
+            </tr>
+            <tr>
+                <td class="HeadTd">
+                    <label>آدرس: </label>
+                </td>
+                <td colspan="3">
+                    <textarea title="این یم فیلد اختیاری است" placeholder="لطفا ادرس خود را وارد کنید" class="form-control" rows="2" cols="15" id="address" name="Address"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="HeadTd"><label>آیا تمایل به عضویت در خبرنامه دارید؟ </label></td>
+                <td>
+                    خیر <input type="radio" name="ReceiveNews" value="0" />
+                    بله <input type="radio" name="ReceiveNews" value="1" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <input style="display:inline" class="form-check me-5 align-content-center" type="checkbox" value="1" name="RegisterConfirm" />
+                    <label style="display:inline" class="container pb-2 align-content-center">شرایط و قوانین عضویت به عنوان فروشنده در فروشگاه تولد آذین را میپذیرم</label>
+                </td>
+            </tr>
+
+            @*--------------------------------------------------------------------------*@
+
+            <tr>
+                <td colspan="2"><input type="reset" class="form-control btn btn-secondary" value="پر کردن مجدد فرم" /></td>
+                <td colspan="2"><input type="submit" class="form-control btn btn-primary" value="ثبت نام به عنوان فروشنده در اذین شادی" /></td>
+            </tr>
+        </table>
+    </form>
+
+</section>
+

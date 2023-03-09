@@ -1,0 +1,18 @@
+﻿@model Azin.Shadi.Models.T_product
+
+@{
+    ViewBag.Title = $"{Model.Name}";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="adminProductDetalis mt-5">
+    @Html.Partial("_DetailsProduct", Model)
+    @Html.ActionLink("بازگشت به لیست", "Index", null, new { @class = "btn btn-primary", @style = "Margin-right:465px;" })
+
+    @Html.ActionLink("ویرایش محصول", "Edit", new { id = Model.id }, new { @class = "btn btn-warning"})
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Azin.Shadi.Models.Product>
+
+@{
+    ViewBag.Title = "محصولات";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 4000;
+}
+
+<form class="searchProduct" action="~/Product/Search" enctype="multipart/form-data">
+    <input type="search" class="form-control mt-5 d-inline" style="" placeholder="جستجوی محصولات" name="Search" id="Search" />
+    <input type="submit" class="btn btn-secondary d-inline" value="جستجو" />
+</form>
+<div class="manageProductList">
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InventoryStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                عملیات
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @if (item.Brand == "")
+                    {
+                        <span>______</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Brand)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inventory)
+                </td>
+                <td>
+                    @if (item.InventoryStatus == true)
+                    {
+                        <span style="color:green">موجود</span>
+                    }
+                    else
+                    {
+                        <span style="color:red">ناموجود</span>
+                    }
+                </td>
+                <td>
+                    @if (item.IsActive == true)
+                    {
+                        <span style="color:green">فعال</span>
+                    }
+                    else
+                    {
+                        <span style="color:red">غیرفعال</span>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("ویرایش", "Edit", new { id = item.id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("جزئیات", "Details", new { id = item.id }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("حذف", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+            count++;
+        }
+
+    </table>
+
+</div>
