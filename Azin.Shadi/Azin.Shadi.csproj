@@ -242,11 +242,7 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Manage\DashBoard.cshtml" />
-    <Content Include="Views\Manage\_AdminRightNavIcon.cshtml" />
-    <Content Include="Views\Manage\_reportPanel.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Manage\_RightAdminNav.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Product\_DetailsProduct.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
@@ -258,6 +254,8 @@
     <Content Include="Views\ProductCategory\Edit.cshtml" />
     <Content Include="Views\ProductCategory\Index.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\DashBoard.cshtml" />
+    <Content Include="Views\Admin\_reportPanel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
