@@ -36,12 +36,12 @@ namespace Azin.Shadi.Controllers
                     return View();
                 }
                 var logedAdmin = db.Admins.First(t => t.Mobile == admin.Mobile);
-                if (logedAdmin.Password != admin.Password)
+                if (logedAdmin.Password == admin.Password)
                 {
-                    ModelState.AddModelError("Password", "رمز عبور وارد نشده نادرست است!");
-                    return View();
+                    return View("DashBoard");
                 }
-                return View("DashBoard");
+                ModelState.AddModelError("Password", "رمز عبور وارد نشده نادرست است!");
+                return View();
             }
 
             return View();

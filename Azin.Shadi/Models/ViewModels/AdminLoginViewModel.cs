@@ -10,8 +10,7 @@ namespace Azin.Shadi.Models.ViewModels
     public class AdminLoginViewModel
     {
         [Display(Name ="موبایل")]
-        [Required(ErrorMessage =" {0} را وارد کنید")]
-        [Phone]
+        [Required(ErrorMessage =" {0} را وارد کنید")]        
         public string Mobile { get; set; }
 
         [Display(Name = "پسورد")]

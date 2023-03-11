@@ -233,7 +233,7 @@ main section:first-child div:nth-child(7):hover {
             border-radius: 5px;
             margin-top: 30px
         }
-      
+
         .mainBody section a {
             display: inline;
             height: 160px;
@@ -394,11 +394,11 @@ main section:first-child div:nth-child(7):hover {
 
 .adminoption {
     margin-right: 21.4%;
-    margin-left:1%;
+    margin-left: 1%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
 }
 
 .AdminPanelOptions a div:hover {
@@ -407,8 +407,8 @@ main section:first-child div:nth-child(7):hover {
     transition-duration: 1s;
 }
 
-    .AdminPanelOptions a div p {
-        margin: 0 auto;
-        color: white;
-        font-size: 20px;
-    }
+.AdminPanelOptions a div p {
+    margin: 0 auto;
+    color: white;
+    font-size: 20px;
+}

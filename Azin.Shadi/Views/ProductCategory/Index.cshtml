@@ -3,15 +3,17 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
 }
-
-<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table table-striped table-bordered shadow manageProductList" style="width:40%;margin-left:20%">
     <tr>
+        <th class="col-md-2">
+            ردیف
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>    
@@ -20,6 +22,7 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td class="fs-5">@count</td>
         <td style="font-size:20px; font-weight:500">
             @Html.DisplayFor(modelItem => item.Name)
         </td>    
@@ -28,6 +31,7 @@
             @Html.ActionLink("حذف", "Delete","productcategory", new { id=item.Id},new { @class = "btn btn-danger" })
         </td>
     </tr>
+    count++;
 }
 
 </table>
