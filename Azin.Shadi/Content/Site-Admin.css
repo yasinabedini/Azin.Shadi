@@ -412,3 +412,44 @@ main section:first-child div:nth-child(7):hover {
     color: white;
     font-size: 20px;
 }
+
+.signUp-UserAdmin {
+    background-color: #e2e1e1;
+    margin-right: 34%;
+    border-radius: 10px;
+    width: 52%;
+    height: auto;
+    margin-top: 150px;
+}
+
+    .signUp-UserAdmin .form-group {
+        margin-right: 20px;
+    }
+
+    .signUp-UserAdmin .form-control {
+        width: 250px;
+        margin: 7px 0;
+    }
+
+    .signUp-UserAdmin .form-label {
+        margin: 7px 0;
+        font-weight:500;
+    }
+
+    .signUp-UserAdmin tr {
+        border-bottom: 2px solid lightgray;
+    }
+
+
+        .signUp-UserAdmin tr:first-child {
+            border-bottom:2px solid white;            
+        }
+
+        .signUp-UserAdmin tr:first-child th:nth-child(2){
+            padding-right:190px;
+        }
+
+.registerFormIcon{
+margin-top:-5px;
+margin-right:-5px;
+}

@@ -2,74 +2,76 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 1000;
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table bg-white">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.firstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Eamil)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mobile)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.registerdate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isActive)
-        </th>
-        <th></th>
-    </tr>
+<div class="manageProductList shadow" style="margin-top:60px;">
+    <table class="table">
+        <tr style="background-color:#e7e7e7">
+            <td class="fw-bold">ردیف</td>
+            <th>
+                @Html.DisplayNameFor(model => model.Name) @Html.DisplayNameFor(model => model.Family)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Eamil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                عملیات
+            </th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.firstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Eamil)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mobile)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.registerdate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isActive)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
 
-</table>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@count</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name) @Html.DisplayFor(modelItem => item.Family)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Eamil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @if (item.IsActive == true)
+                    {
+                        <span class="text-success">فعال</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger">غیر فعال</span>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("ویرایش", "Edit", null, new { id = item.id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("جزئیات", "Details", null, new { id = item.id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("حذف", "Delete", null, new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+            count += 3;
+        }
+    </table>
+</div>

@@ -1,0 +1,111 @@
+﻿@model Azin.Shadi.Models.ViewModels.RegisterAdminViewModel
+
+@{
+    ViewBag.Title = "ثبت نام ادمین";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("register", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <table class="signUp-UserAdmin table table-responsive shadow">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <tr>
+            <th>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="registerFormIcon" viewBox="0 0 16 16">
+                    <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z" />
+                </svg>
+            </th>
+            <th colspan="4" class="fs-4 ">
+                ثبت نام ادمین جدید
+            </th>
+        </tr>
+        <tr>
+            <td class="text-center">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label" }) :
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control d-inline" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </td>
+            <td class="text-center">
+                @Html.LabelFor(model => model.Family, htmlAttributes: new { @class = "form-label" }) :
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Family, new { htmlAttributes = new { @class = "form-control d-inline" } })
+                @Html.ValidationMessageFor(model => model.Family, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td class="text-center">
+                @Html.LabelFor(model => model.Eamil, htmlAttributes: new { @class = "form-label" }) :
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Eamil, new { htmlAttributes = new { @class = "form-control d-inline" } })
+                @Html.ValidationMessageFor(model => model.Eamil, "", new { @class = "text-danger" })
+            </td>
+            <td class="text-center">
+                @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "form-label" }) :
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control d-inline" } })
+                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label" }) :
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control d-inline" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </td>
+            <td class="text-center">
+                @Html.LabelFor(model => model.RepeatPassword, htmlAttributes: new { @class = "form-label" }) :
+            </td>
+            <td>
+                @Html.EditorFor(model => model.RepeatPassword, new { htmlAttributes = new { @class = "form-control d-inline" } })
+                @Html.ValidationMessageFor(model => model.RepeatPassword, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "form-label" }) :
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control d-inline" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </td>
+            <td class="text-center">
+                @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "form-label" }) :
+            </td>
+            <td>
+                <select class="form-control" name="Department" id="Department">
+                    <option selected>دپارتمان مورد نظر را انتخاب کنید</option>
+                    <option value="Admin">مدیر سایت</option>
+                    <option value="support">پشتیبان</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                <p class="form-label">عکس پروفایل</p>
+            </td>
+            <td>
+                <input type="file" name="ProfileImage" id="ProfileImage" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="تائید ثبت نام" class="btn btn-success" />
+            </td>
+            <td><input type="reset" value="پر کردن مجدد" class="btn btn-danger" /></td>
+        </tr>
+    </table>
+}
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
