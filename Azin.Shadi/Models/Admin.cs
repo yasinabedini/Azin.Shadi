@@ -18,6 +18,7 @@ namespace Azin.Shadi.Models
     {
         [Display(Name = "آیدی")]
         [Required(ErrorMessage = "{0} را پر کنید")]
+        [Key]
         public int id { get; set; }
 
         [Display(Name = "نام")]
@@ -36,8 +37,8 @@ namespace Azin.Shadi.Models
         public string Password { get; set; }
 
         [Display(Name = "ایمیل")]
-        [EmailAddress(ErrorMessage = "ایمیل خود را به درستی وارد کنید!")]
-        public string Eamil { get; set; }
+        [Required]        
+        public string Email { get; set; }
 
         [Display(Name = "موبایل")]
         [Required(ErrorMessage = "{0} را پر کنید")]
@@ -46,7 +47,7 @@ namespace Azin.Shadi.Models
 
         [Display(Name = "تاریخ ثبت نام")]
         [Required]
-        public System.DateTime RegisterDate { get; set; }
+        public DateTime RegisterDate { get; set; }
 
         [Display(Name = "وضعیت")]
         [Required]
@@ -55,10 +56,7 @@ namespace Azin.Shadi.Models
         [Display(Name = "دپارتمان فعالیت")]
         [Required(ErrorMessage = "{0} را پر کنید")]
         public string Department { get; set; }
-
-        [Display(Name = "آخرین بازدید")]
-        public Nullable<System.DateTime> LastLoginDate { get; set; }
-
+     
         [Display(Name = "تصویر پروفایل")]
         public string ImageName { get; set; }
     }

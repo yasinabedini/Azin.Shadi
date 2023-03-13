@@ -13,7 +13,7 @@ namespace Azin.Shadi.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202303091903374_CreateDataBase"; }
+            get { return "202303131415247_CreateDataBase"; }
         }
         
         string IMigrationMetadata.Source

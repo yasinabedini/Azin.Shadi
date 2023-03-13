@@ -16,12 +16,11 @@ namespace Azin.Shadi.Migrations
                         Family = c.String(nullable: false),
                         Username = c.String(),
                         Password = c.String(nullable: false),
-                        Eamil = c.String(),
+                        Email = c.String(nullable: false),
                         Mobile = c.String(nullable: false),
                         RegisterDate = c.DateTime(nullable: false),
                         IsActive = c.Boolean(nullable: false),
                         Department = c.String(nullable: false),
-                        LastLoginDate = c.DateTime(),
                         ImageName = c.String(),
                     })
                 .PrimaryKey(t => t.id);

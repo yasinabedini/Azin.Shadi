@@ -39,11 +39,11 @@
 
         <tr>
             <td class="text-center">
-                @Html.LabelFor(model => model.Eamil, htmlAttributes: new { @class = "form-label" }) :
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label" }) :
             </td>
             <td>
-                @Html.EditorFor(model => model.Eamil, new { htmlAttributes = new { @class = "form-control d-inline" } })
-                @Html.ValidationMessageFor(model => model.Eamil, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control d-inline" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </td>
             <td class="text-center">
                 @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "form-label" }) :
@@ -62,11 +62,11 @@
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </td>
             <td class="text-center">
-                @Html.LabelFor(model => model.RepeatPassword, htmlAttributes: new { @class = "form-label" }) :
+                @Html.LabelFor(model => model.PasswordConfirm, htmlAttributes: new { @class = "form-label" }) :
             </td>
             <td>
-                @Html.EditorFor(model => model.RepeatPassword, new { htmlAttributes = new { @class = "form-control d-inline" } })
-                @Html.ValidationMessageFor(model => model.RepeatPassword, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.PasswordConfirm, new { htmlAttributes = new { @class = "form-control d-inline" } })
+                @Html.ValidationMessageFor(model => model.PasswordConfirm, "", new { @class = "text-danger" })
             </td>
         </tr>
         <tr>
@@ -93,7 +93,7 @@
                 <p class="form-label">عکس پروفایل</p>
             </td>
             <td>
-                <input type="file" name="ProfileImage" id="ProfileImage" class="form-control" />
+                <input type="file" name="imageUpload" id="imageUpload" class="form-control" />
             </td>
         </tr>
         <tr>

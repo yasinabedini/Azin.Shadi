@@ -10,7 +10,7 @@ namespace Azin.Shadi.Models.ViewModels
     public class RegisterAdminViewModel
     {
         [Display(Name = "نام")]
-        [Required(ErrorMessage = "{0} را پر کنید")]
+        [Required(ErrorMessage = "{0} را پر کنید")]        
         public string Name { get; set; }
 
         [Display(Name = "نام خانوادگی")]
@@ -21,21 +21,25 @@ namespace Azin.Shadi.Models.ViewModels
         public string Username { get; set; }
 
         [Display(Name = "رمز عبور")]
-        [Required(ErrorMessage = "{0} را پر کنید")]
+        [Required(ErrorMessage = "فیلد {0} اجباری است!")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name="تکرار رمز عبور")]
-        [Compare("Password")]
-        [Required]
-        public string RepeatPassword { get; set; }
+
+        [Display(Name = "تکرار رمز عبور")]
+        [Required(ErrorMessage = "فیلد {0} اجباری است!")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "رمز عبور با تکرار آن مطابقت ندارد!")]
+        public string PasswordConfirm { get; set; }
 
         [Display(Name = "ایمیل")]
-        [EmailAddress(ErrorMessage = "ایمیل خود را به درستی وارد کنید!")]
-        public string Eamil { get; set; }
+        [Required(ErrorMessage = "ایمیل خود را وارد کنید")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
 
         [Display(Name = "موبایل")]
         [Required(ErrorMessage = "{0} را پر کنید")]
-        [RegularExpression("(09){9}[0-9]", ErrorMessage = "شماره موبایل را درست وارد کنید")]
+        [RegularExpression("(09)[0-9]{9}", ErrorMessage = "فرمت شماره موبایل اشتباه است!")]
         public string Mobile { get; set; }
 
         [Display(Name = "دپارتمان فعالیت")]

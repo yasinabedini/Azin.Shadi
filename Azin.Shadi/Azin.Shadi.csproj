@@ -199,9 +199,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303091903374_CreateDataBase.cs" />
-    <Compile Include="Migrations\202303091903374_CreateDataBase.Designer.cs">
-      <DependentUpon>202303091903374_CreateDataBase.cs</DependentUpon>
+    <Compile Include="Migrations\202303131415247_CreateDataBase.cs" />
+    <Compile Include="Migrations\202303131415247_CreateDataBase.Designer.cs">
+      <DependentUpon>202303131415247_CreateDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -213,6 +213,7 @@
     <Compile Include="Models\ViewModels\ProductViewModel.cs" />
     <Compile Include="Models\ViewModels\RegisterAdminViewModel.cs" />
     <Compile Include="Models\ViewModels\RegisterProductViewModel.cs" />
+    <Compile Include="MyClasses\HashPassword.cs" />
     <Compile Include="MyClasses\PersianCulture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -287,8 +288,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202303091903374_CreateDataBase.resx">
-      <DependentUpon>202303091903374_CreateDataBase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202303131415247_CreateDataBase.resx">
+      <DependentUpon>202303131415247_CreateDataBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
