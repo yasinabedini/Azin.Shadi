@@ -7,6 +7,9 @@ using Azin.Shadi.Models;
 using Azin.Shadi.Models.ViewModels;
 using System.Net;
 using System.IO;
+using Azin.Shadi.App_Start;
+using Azin.Shadi.MyClasses;
+
 
 namespace Azin.Shadi.Controllers
 {
@@ -44,22 +47,38 @@ namespace Azin.Shadi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register([Bind(Include = "")] RegisterAdminViewModel admin, HttpPostedFileBase profileImage)
+        public ActionResult Register([Bind(Include = "Name,Family,Username,Password,PasswordConfirm,Email,Mobile,Department")] RegisterAdminViewModel admin, HttpPostedFileBase imageUpload)
         {
             if (ModelState.IsValid)
             {
                 string imageName = "defaultprofile.png";
-                if (profileImage != null)
+                if (imageUpload != null)
                 {
-                    if (profileImage.ContentType != "image/jpeg" && profileImage.ContentType != "image/png")
+                    if (imageUpload.ContentType != "image/jpeg" && imageUpload.ContentType != "image/png")
                     {
-                        ModelState.AddModelError("","فقط عکس های با فرمت Png و jpeg قابل قبول است. ");
+                        ModelState.AddModelError("ImageName", "فرمت عکس شما فقط باید jpeg یا jpg یا png باشد!");
+                        return View();
                     }
+                    if (imageUpload.ContentLength > 500000)
+                    {
+                        ModelState.AddModelError("ImageName", "حداکثر حجم عکس آپلودی شما باید 500 کلوبایت باشد!");
+                        return View();
+                    }
+                    imageName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(imageUpload.FileName);
+                    imageUpload.SaveAs(Server.MapPath(@"Images\AdminProfilePicture\") + imageName);
 
-
-                    imageName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(profileImage.FileName);
                 }
+                Admin newAdmin = new Admin()
+                {
+                    ImageName = imageName,
+                    IsActive = true,
+                    RegisterDate = DateTime.Now,
+                    Department = "admin"
 
+                };
+                AutoMapperConfig.mapper.Map(admin, newAdmin);
+                db.Admins.Add(newAdmin);
+                db.SaveChanges();
 
             }
 

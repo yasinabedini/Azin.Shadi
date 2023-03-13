@@ -17,6 +17,7 @@ namespace Azin.Shadi.App_Start
             MapperConfiguration configuration = new MapperConfiguration(t =>
             {
                 t.CreateMap<Admin, RegisterAdminViewModel>();
+                t.CreateMap<RegisterAdminViewModel, Admin>();
             });
             mapper = configuration.CreateMapper();
         }
