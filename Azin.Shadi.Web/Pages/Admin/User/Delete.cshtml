@@ -1,0 +1,66 @@
+﻿@page "{id}"
+@model Azin.Shadi.Web.Pages.Admin.User.DeleteModel
+@{    
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">حذف کاربر (@Model.DeleteUser.Name)</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <form method="post" asp-page="Delete" enctype="multipart/form-data">
+        <input type="hidden" asp-for="DeleteUser.UserId" />
+        <div class="col-md-8">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    اطلاعات کاربر
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="test-bold">نام کاربری : </label>
+                        <label class="fw-bold">@Model.DeleteUser.Username</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="test-bold">نام : </label>
+                        <label class="fw-bold">@Model.DeleteUser.Name</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="test-bold">وضعیت فعلی : </label>
+                        @if (@Model.DeleteUser.IsActive)
+                        {
+                            <label class="fw-bold text-success">فعال</label>
+                        }
+                        else
+                        {
+                            <label class="fw-bold text-danger">غیر فعال</label>
+
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label class="test-bold">تاریخ ثبت نام :</label>
+                        <label class="fw-bold">@Model.DeleteUser.RegisterDate</label>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    آیا از حذف کاربر مطمئن هستید ؟
+                </div>                
+                <div class="panel-body">
+                    <div class="form-group">
+                      <input class="btn btn-danger" type="submit" value="حذف کاربر (@Model.DeleteUser.Name)"/>
+                       <a asp-page="index" class="btn btn-warning">انصراف</a>
+                    </div>                   
+                </div>                
+            </div>
+        </div>
+
+    </form>
+</div>

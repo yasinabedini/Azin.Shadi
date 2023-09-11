@@ -1,0 +1,88 @@
+﻿@using Azin.Shadi.Core.Convertors;
+@using Azin.Shadi.Core.DTOs
+@using Azin.Shadi.Core.Services.Interfaces;
+@model Azin.Shadi.Core.DTOs.WalletRechargeViewModel;
+@inject IUserService _service;
+@inject IPermissionService _permissionService;
+
+@{
+    ViewData["Title"] = "کیف پول شما";
+    int walletBalance = _service.GetWalletBalance(_permissionService.GetAuthonticatedUserUsername(Context.Request.HttpContext));
+}
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">فروشگاه تولد آذین</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> کیف پول شما </li>
+        </ul>
+    </nav>
+</div>
+
+<main>
+    <div class="container">
+        <div class="user-account">
+            <div class="row">
+                <partial name="_SideBar" />
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    <section class="user-account-content">
+                        <header><h1> کیف پول شما </h1></header>
+                        <div class="inner form-layer">
+                            <form asp-action="WalletRecharge" method="post">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-8 col-xs-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="username"><i class="zmdi zmdi-balance-wallet"></i></span>
+                                            <input type="number" class="form-control" asp-for="Amount" placeholder="مبلغ به تومان">
+                                        </div>
+                                    </div>
+
+                                    <div class="text-danger" asp-validation-summary="All"></div>
+                                    <div class="col-md-7 col-sm-8 col-xs-12">
+                                        <p class="disabled">موجودی فعلی کیف پول : @walletBalance تومان</p>
+                                        <button class="btn btn-success"> شارژ کیف پول </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <hr />
+                            @{
+                                List<TransactionViewModel> list = ViewBag.TransactionList as List<TransactionViewModel>??new List<TransactionViewModel>();
+                            }
+                            <p style="font-size:18px !important;font-weight:bold">تراکنش های مربوط به کیف پول</p>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>مبلغ</th>
+                                    <th>تاریخ</th>
+                                    <th>نوع تراکنش</th>
+                                    <th>شرح</th>
+                                </tr>
+                                @foreach (var item in list)
+                                {
+                                    <tr>
+                                        <td>@item.Amount.ToString("#,0 تومان")</td>
+                                        <td>
+                                            @item.PayDate.ToShamsi()
+                                        </td>
+                                        <td>
+                                            @if (item.TransactionTypeId == 2)
+                                            {
+                                                <p class="text-danger">برداشت از کیف پول</p>
+                                            }
+                                            @if (item.TransactionTypeId == 3)
+                                            {
+                                                <p class="text-success">شارژ کیف پول</p>
+                                            }
+                                        </td>
+                                        <td>
+                                            @item.Description
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,67 @@
+﻿@page
+@model Azin.Shadi.Web.Pages.Admin.Order.IndexModel
+@{
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">لیست سفارش ها</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                لیست سفارش ها
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <div class="row ">                         
+                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                                <thead>
+                                    <tr>
+                                        <th>کد سفارش</th>
+                                        <th>وضعیت</th>
+                                        <th>وضعیت پرداخت</th>
+                                        <th>قیمت نهایی</th>
+                                        <th>تعداد کالا</th>                                        
+                                        <th>دستورات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var order in Model.Orders)
+                                    {
+                                        <tr>
+                                            <td>@order.Id</td>
+                                            <td>@order.OrderStatus.Title</td>
+                                            <td>
+                                                @if (@order.IsPay)
+                                                {
+                                                    <p class="text-success">پرداخت شده</p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="text-danger">پرداخت نشده</p>
+                                                }
+                                            </td>
+                                            <td>@order.SumPrice</td>                                           
+                                            <td>@order.OrderLines.Count()</td>
+                                            <td>
+                                                <a asp-page="showorder" asp-route-id="@order.Id" class="btn btn-primary">مشاهده سفارش</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table><div class="row text-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

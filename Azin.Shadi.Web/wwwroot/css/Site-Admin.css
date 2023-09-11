@@ -1,0 +1,471 @@
+﻿body {
+    background-color: white;
+    width: 100%;
+    font-family: Vazir;
+}
+
+#adminLoginBody {
+    background-image: url(/Images/AdminLogin-Background.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.signInAdmin {
+    border-radius: 10px;
+    width: 450px;
+    margin-top: 200px;
+    background-color: white
+}
+
+    .signInAdmin table tr:first-of-type {
+        justify-content: center
+    }
+
+    .signInAdmin table tr:nth-child(2) td p, .signupUserForm table tr:nth-child(2) td p {
+        display: inline;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bolder;
+        color: black
+    }
+
+    .signInAdmin tr:first-child td input {
+        height: 30px;
+        width: 200px;
+        margin: auto -15px
+    }
+
+    .signInAdmin tr td label {
+        margin-right: 41px;
+    }
+
+    .signInAdmin tr td input {
+        width: 240px;
+        padding-left: 41px;
+    }
+
+    .signInAdmin tr:last-of-type .btn {
+        text-align: center;
+        scroll-padding-inline-start: 40px;
+    }
+
+.AdminNavbar {
+    width: 100%;
+    height: 60px;
+    background-color: lightgray;
+}
+
+    .AdminNavbar table tr td:first-child {
+        background-color: rgb(49 49 49);
+        width: 20%;
+        height: 60px;
+        text-align: center;
+        color: white;
+        font-size: 22px;
+        font-family: Vazir;
+        font-weight: bold;
+        padding-top: 12px
+    }
+
+    .AdminNavbar table tr td:nth-child(3) a svg:hover {
+        transform: scale(1.1);
+        transition-property: transform;
+        transition-duration: 500ms;
+    }
+
+    .AdminNavbar table tr td:nth-child(3) img {
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        margin-top: 8px;
+    }
+
+    .AdminNavbar .dropdown-toggle {
+        margin-left: 40px;
+    }
+
+
+.AdminProfile {
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    display: inline
+}
+
+main section:first-child {
+    width: 20%;
+    background-color: rgb(49 49 49);
+    height: 100%;
+    position: fixed;
+}
+
+    main section:first-child div:first-of-type {
+        margin-top: 20px;
+    }
+
+    main section:first-child div {
+        width: 100%;
+        padding-right: 15px;
+        color: rgb(206 206 206);
+        font-size: 20px;
+        font-family: Vazir;
+        margin: 0px auto
+    }
+
+        main section:first-child div label {
+            color: rgb(206 206 206);
+            font-size: 20px;
+            font-family: Vazir;
+        }
+
+.RightAdminNav .dropdown {
+    height: 6.5%;
+    display: flex;
+    align-items: center
+}
+
+main section:first-child .dropdown {
+    width: 100%;
+    padding-right: 4px;
+    color: rgb(206 206 206);
+}
+
+    main section:first-child .dropdown label {
+        color: rgb(206 206 206);
+        font-size: 20px;
+        font-family: Vazir;
+    }
+
+main section:first-child main section:first-child label {
+    font-size: 20px
+}
+
+
+main section:first-child div p {
+    display: inline
+}
+
+main section:first-child div:first-child {
+    margin-top: 45px
+}
+
+main svg {
+    margin: 15px
+}
+
+main section:first-child div:hover {
+    background-color: dodgerblue;
+    border-radius: 20px;
+    width: 90%;
+    transition-property: width,background-color;
+    transition-duration: 1s;
+}
+
+.RightAdminNav .dropdown .dropdown-menu {
+    margin-right: 7px;
+    margin-top: -5px;
+    border: 0 solid white;
+}
+
+
+main .RightAdminNav div:first-child:hover {
+    background-color: rgb(49 49 49);
+    border-radius: 0px !important;
+    transition: none !important;
+    width: none !important;
+    width: 100% !important;
+}
+
+.RightAdminNav .dropdown-menu:hover {
+    background-color: white !important;
+    width: 100% !important;
+}
+
+main .RightAdminNav div:last-of-type:hover {
+    background-color: red;
+    border-radius: 20px;
+    width: 90%;
+    transition-property: width,background-color;
+    transition-duration: 1s;
+}
+
+main section:first-child div:nth-child(7):hover {
+    background-color: green;
+    border-radius: 20px;
+    width: 90%;
+    transition-property: width,background-color;
+    transition-duration: 1s;
+}
+
+
+.RightAdminNav div:first-of-type {
+    padding: 5px 15px;
+    border-bottom: 0.5px solid gray
+}
+
+.RightAdminNav div:nth-child(2) {
+    margin-top: 10px;
+}
+
+.AdminNavbar table td:nth-child(3) svg {
+    margin-left: 35px;
+    margin-top: 10px
+}
+
+.mainBody {
+    height: 400px;
+    width: 79.6%;
+    margin-right: 310px;
+    margin-top: 40px
+}
+
+
+    .mainBody section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around
+    }
+
+        .mainBody section div {
+            height: 160px;
+            width: 22%;
+            border-radius: 5px;
+            margin-top: 30px
+        }
+
+        .mainBody section a {
+            display: inline;
+            height: 160px;
+            width: 22%;
+            border-radius: 5px;
+            margin-top: 30px
+        }
+
+.informationBox {
+    width: 20%;
+    background-color: red;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.iconbox {
+    width: 35%;
+    height: 160px;
+    margin-left: 15px;
+}
+
+
+
+.DescriptionBox {
+    color: white;
+    font-size: 25px;
+    font-family: Vazir;
+    text-align: center;
+    width: 60%;
+}
+
+    .DescriptionBox p, .DescriptionBox pre {
+        font-family: Vazir;
+        text-align: start;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+        .DescriptionBox p:first-child {
+            margin-right: 15px;
+            margin-top: -20px;
+        }
+
+        .DescriptionBox p:nth-child(2) {
+            width: 130px;
+            font-size: 19px;
+            font-weight: 400;
+            margin-right: 15px;
+            margin-top: 40px;
+        }
+
+.manageProductList {
+    font-family: Vazir;
+    float: left;
+    margin-top: 20px;
+    margin-left: 16px;
+    text-align: center;
+    width: 78%;
+}
+
+.createProduct {
+    background-color: lightgray;
+    padding: 10px;
+    width: 46%;
+    margin-top: 80px;
+    margin-right: 34%;
+}
+
+    .createProduct .form-control {
+        width: 300px;
+        margin-top: 5px;
+    }
+
+    .createProduct .control-label {
+        font-family: Vazir;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+
+    .createProduct .text-danger {
+        display: block;
+        margin-right: 32px;        
+        font-size: 14px;
+        font-weight: 500
+    }
+
+.adminProductDetalis table {
+    background-color: whitesmoke;
+    margin-right: 465px;
+    width: 60%;
+    border-radius: 15px;
+    font-family: Vazir;
+    margin-top: 70px;
+}
+
+    .adminProductDetalis table tr:first-of-type {
+        font-size: 25px;
+        font-weight: 500
+    }
+
+    .adminProductDetalis table tr {
+        height: 60px;
+    }
+
+.adminProductDetalis .form-control {
+    width: 250px;
+    margin-top: 10px
+}
+
+.adminProductDetalis table tr .form-label {
+    padding-top: 15px;
+    font-size: 17px;
+    font-weight: 500
+}
+
+.productimages {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%
+}
+
+.searchProduct .form-control:first-of-type {
+    margin-right: 340px;
+    width: 20%;
+}
+
+.searchProduct .form-control:last-of-type {
+    margin-right: 10px
+}
+
+.AdminPanelOptions p {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 330px;
+}
+
+.AdminPanelOptions a div {
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.adminoption {
+    margin-right: 21.4%;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.AdminPanelOptions a div:hover {
+    transform: scale(1.05);
+    transition-property: transform;
+    transition-duration: 1s;
+}
+
+.AdminPanelOptions a div p {
+    margin: 0 auto;
+    color: white;
+    font-size: 20px;
+}
+
+.signUp-UserAdmin {
+    background-color: #e2e1e1;
+    margin-right: 34%;
+    border-radius: 10px;
+    width: 52%;
+    height: auto;
+    margin-top: 70px;
+}
+
+    .signUp-UserAdmin .form-group {
+        margin-right: 20px;
+    }
+
+    .signUp-UserAdmin .form-control {
+        width: 250px;
+        margin: 7px 0;
+    }
+
+    .signUp-UserAdmin .form-label {
+        margin: 7px 0;
+        font-weight: 500;
+    }
+
+    .signUp-UserAdmin tr {
+        border-bottom: 2px solid lightgray;
+    }
+
+
+        .signUp-UserAdmin tr:first-child {
+            border-bottom: 2px solid white;
+        }
+
+            .signUp-UserAdmin tr:first-child th:nth-child(2) {
+                padding-right: 190px;
+            }
+
+    .signUp-UserAdmin table tr:last-child {
+        border: 0px solid rgba(0,0,0,0)
+    }
+
+.registerFormIcon {
+    margin-top: -5px;
+    margin-right: -5px;
+}
+
+.productCategoryList {
+    background-color: #e2e1e1;
+    margin-right: 44.5%;
+    border-radius: 10px;
+    width: 30%;
+    height: auto;
+    margin-top: 70px;
+}
+
+    .productCategoryList .form-control {
+        width: 85%;
+        margin-top: 10px;
+    }
+
+    .productCategoryList .form-label {
+        margin-right: 20px;
+        margin-top: 10px;
+        font-weight: bold
+    }

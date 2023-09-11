@@ -1,0 +1,98 @@
+﻿@model Azin.Shadi.Core.DTOs.LoginViewModel
+@{
+    ViewData["Title"] = "ورود به سایت";
+}
+@section MetaTag{
+
+    <meta name=description content="فروشگاه تولد آذین - پنل ورود - شما برای ثبت سفارش و نهایی کردن سفارشات خود باید در سایت ورود کنید">
+    <meta name=googlebot content=index,follow>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="" />
+
+    <meta property=og:site_name value="فروشگاه تولد آذین">
+    <meta property=og:title content="صفحه ورود به سایت فروشگاهی آذین">
+    <meta property=og:url content="https://Azinshadi.ir/Login" />
+    <meta property=og:image content="~/images/logo.png">
+    <meta property=og:image:url content="~/images/logo.png" />
+    <meta property=og:image:width content="500">
+
+    <meta property=og:image:type content="image/jpg">
+    <meta property=og:description content="فروشگاه تولد آذین - صفحه ورود به سایت فروشگاهی ">
+    <meta property=og:price:currency content="IRR">
+    <meta property=og:locale content="ir_FA">
+}
+
+<nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">فروشگاه تولد آذین</a></li>
+        <li class="breadcrumb-item active" aria-current="page">ورود به سایت</li>
+    </ul>
+</nav>
+
+<main class="client-page">
+    <div class="container-content">
+        @if (Context.Request.Query["newRegister"].ToString().ToLower() == "true")
+        {
+            <div class="alert alert-success">
+                <p class="help-block">ثبت نام با موفقیت انجام شد!</p>
+            </div>
+
+            <script>
+                function fadeOut() {
+                    $(".alert").fadeToggle(500, "swing", function () {
+                        this.remove();
+                    });
+                }
+
+                var delay = 10000; //10 seconds
+                setTimeout(fadeOut, delay);
+            </script>
+        }
+
+        @if (ViewBag.IsSuccess != null)
+        {
+            <div class="alert alert-success">
+                <p class="help-block">ورود با موفقیت انجام شد</p>
+            </div>
+
+            <script>
+                // Your delay in milliseconds
+                var delay = 3000;
+                setTimeout(function () { window.location = "https://Azinshadi.ir"; }, delay);
+            </script>
+
+        }
+        <header><h2> ورود به سایت </h2></header>
+
+        <div class="form-layer">
+
+            <form asp-action="Login" method="post">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="email-address"><i class="zmdi zmdi-email"></i></span>
+                    <input asp-for="Email" type="text" class="form-control" placeholder="ایمیل" aria-describedby="email-address">
+
+                </div>
+                <span asp-validation-for="Email"></span>
+                <div class="input-group">
+                    <span class="input-group-addon" id="password"><i class="zmdi zmdi-lock"></i></span>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="رمز عبور " aria-describedby="password">
+
+                </div>
+                <span asp-validation-for="Password"></span>
+                <div class="remember-me">
+                    <label><input asp-for="RemmemberMe" type="checkbox">  مرا بخاطر بسپار </label>
+                </div>
+
+                <div class="link">
+                    <a href="/ForgotPassword"> <i class="zmdi zmdi-lock"></i> رمز عبور خود را فراموش کرده ام !</a>
+                    <a href="/Register"> <i class="zmdi zmdi-account"></i> عضویت در سایت </a>
+                </div>
+
+                <button class="btn btn-success"> ورود به سایت </button>
+
+            </form>
+        </div>
+
+    </div>
+</main>

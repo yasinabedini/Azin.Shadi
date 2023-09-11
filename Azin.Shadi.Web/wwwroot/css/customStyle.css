@@ -1,0 +1,325 @@
+﻿body {
+    font-family: Vazir
+}
+
+
+.loggein a:nth-of-type(2):hover {
+    color: red !important
+}
+
+.field-validation-error {
+    color: red;
+}
+
+.my-orders div:nth-child(2) .inner .row {
+    background-color: #eeeeee;
+    border-radius: 5px;
+    padding: 15px
+}
+
+    .my-orders div:nth-child(2) .inner .row div p:nth-child(2) {
+        display: inline;
+        font-size: 15px;
+        font-weight: 600;
+        color: forestgreen;
+    }
+
+    .my-orders div:nth-child(2) .inner .row div .bi {
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        padding: 5px
+    }
+
+.my-orders .inner row {
+    padding: 10px !important;
+}
+
+.my-orders img {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.user-account-content {
+    border-radius: 10px;
+    padding: 5px
+}
+
+.order-product-image {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    padding: 10px;
+}
+
+.showFactor {
+    position: relative;
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.my-orders hr {
+    color: white;
+    font-weight: bold
+}
+
+.order-details .row div .user-account-content .inner {
+    margin-bottom: 20px
+}
+
+    .order-details .row div .user-account-content .inner .row:first-child div:nth-child(2) p {
+        float: left;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .order-details .row div .user-account-content .inner div:first-child {
+        display: block;
+    }
+
+    .order-details .row div .user-account-content .inner p:nth-child(5) {
+        float: left
+    }
+
+    .order-details .row div .user-account-content .inner .bi {
+        font-size: 5px;
+        margin: 0 10px;
+    }
+
+
+.product-order-detail img {
+    max-height: 150px;
+    max-width: 150px;
+    margin: 20px;
+    margin-top: 0px;
+}
+
+.product-order-detail p:nth-child(2) {
+    font-size: 15px;
+    font-weight: 600 !important;
+}
+
+.product-order-detail .bi {
+    font-size: 20px !important;
+    margin: 0 !important;
+}
+
+
+.order-details .row div .user-account-content .inner .row:nth-child(3) {
+    background-color: #b8860b3d;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.product-order-detail p:nth-child(4), .product-order-detail p:nth-child(8) {
+    display: inline !important;
+    margin: 5px;
+}
+
+.product-order-detail input {
+    margin: 10px 0;
+}
+
+.product-order-detail .disabled {
+    color: #949494;
+}
+
+.order-details .inner .row:last-child {
+    margin: 0 auto;
+}
+
+.pay-order form .row .inner .row {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 18px
+}
+
+    .pay-order form .row .inner .row:first-child .bi:nth-child(2) {
+        margin-right: 0px !important;
+        margin-left: 8px;
+        font-size: 18px;
+    }
+
+    .pay-order form .row .inner .row:first-child p:nth-child(1) {
+        display: block;
+        font-size: 13px;
+        margin-right: 0px !important;
+        opacity: 80%;
+        margin-bottom: 10px !important;
+    }
+
+    .pay-order form .row .inner .row:first-child p:nth-child(3) {
+        font-weight: 500;
+        display: inline;
+        font-size: 17px;
+    }
+
+    .pay-order form .row .inner .row:first-child p:nth-child(4) {
+        font-size: 15px;
+        margin-top: 10px
+    }
+
+    .pay-order form .row .inner .row:first-child a:nth-child(5) {
+        font-size: 16px;
+        float: left;
+        font-weight: 600;
+        color: #b8860b
+    }
+
+.pay-order .row {
+    margin-top: 20px
+}
+
+.pay-order img {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.pay-order .row:nth-child(2) div .bi {
+    font-size: 30px;
+    color: #b8860b;
+}
+
+.pay-order .row:nth-child(2) div p:first-of-type {
+    display: inline;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px;
+    vertical-align: top;
+}
+
+.pay-order .row:nth-child(2) div p:nth-of-type(2) {
+    font-size: 13px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.pay-order .row:nth-child(2) div p:nth-of-type(3) {
+    font-size: 15px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.pay-order form .row div:nth-child(2) section a:last-child {
+    margin: -20px 0;
+}
+
+.pay-order form div div:last-child section .payment-method .row:first-of-type .bi-cash, .pay-order form div div:last-child section .payment-method .row:first-of-type .bi-credit-card, .pay-order form div div:last-child section .payment-method .row:first-of-type .bi-coin {
+    font-size: 25px !important;
+    margin: 10px
+}
+
+.pay-order form div div:last-child section .payment-method .row:first-of-type p:nth-of-type(2), .pay-order form div div:last-child section .payment-method .row:first-of-type p:nth-of-type(3) {
+    font-size: 12px;
+    color: gray;
+    margin-right: 6%
+}
+
+.pay-order form div div:last-child section .payment-method .row:nth-of-type(2) p:nth-of-type(1) {
+    vertical-align: middle;
+    font-size: 18px
+}
+
+.pay-order form div div:last-child section .payment-method .row:nth-of-type(2) p:last-of-type {
+    font-size: 17px;
+    font-weight: 600
+}
+
+.pay-order form div div:last-child section .payment-method .row:first-of-type p:nth-of-type(4) {
+    display: inline;
+    font-size: 17px;
+    font-weight: 600
+}
+
+.pay-order form div div:last-child section .payment-method .row:first-of-type input:last-of-type {
+    width: 50%;
+    display: inline;
+    margin-right: 5%
+}
+
+.pay-order form div div:last-child section .payment-method .row:first-of-type a:last-child {
+    margin-right: 10px;
+}
+
+
+/* For Sell Product */
+
+.quantity input {
+    width: 45px;
+    height: 42px;
+    line-height: 1.65;
+    float: left;
+    display: block;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+    border: none;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+.landing-layer .container nav .row:first-of-type div:first-of-type ul li .btn, .landing-layer .container nav .row:first-of-type {
+    background-color: rgb(203, 159, 0,0.7);
+    border-radius: 10px;
+    padding: 7px 10px;
+}
+
+    .landing-layer .container nav .row:first-of-type div:first-of-type ul li .bi-cart4, .bi-house-door, .bi-person-fill {
+        color: white;
+        font-size: 22px;
+        vertical-align: central;
+        margin-left: 5px;
+    }
+
+
+.landing-layer nav ul li a:hover, .landing-layer nav .clientarea a:hover {
+    color: black;
+    font-weight: 600;
+}
+
+.terms-items .term-col article .img-layer,
+.terms-items .term-col article .img-layer img {
+    max-height: 200px;
+}
+
+.term-content aside .statistics > .btn-danger {
+    background-color: red !important;
+    padding: 7px 30px;
+}
+
+.term-categories .top-bar:first-of-type .row:first-of-type .pull-right:first-of-type .input input {
+    width: 85%;
+    background-color: #fff;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border: 1px solid gray;
+    border-left: 0;
+    padding: 0 20px 0 60px;
+    color: #2C373B;
+    line-height: 38px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.term-categories .top-bar:first-of-type .row:first-of-type .pull-right:first-of-type .input button {
+    background-color: darkgoldenrod;
+    color: #fff;
+    font-size: 22px;
+    width: 15%;
+    position: absolute;
+    border: 1px solid gray;
+    border-right: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding-top: 5px;
+}
+
+
+.main-menu nav > ul > li > a {
+    border-left: 1px solid #b8860b;
+}
+
+.main-menu nav > ul > li > a:hover {
+    color: white
+}

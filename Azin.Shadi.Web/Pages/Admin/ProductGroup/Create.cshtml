@@ -1,0 +1,46 @@
+﻿@page
+@using Azin.Shadi.Core.Services.Interfaces;
+@model Azin.Shadi.Web.Pages.Admin.ProductGroup.CreateModel
+@{
+}
+@inject IProductService _productService;
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">افزودن دسته بندی جدید</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <form method="post">
+        <div class="col-md-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    اطلاعات دسته بندی
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>عنوان دسته بندی : </label>
+                        <input type="text" asp-for="ProductGroup.Title" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>دسته بندی اصلی :  </label>
+                        <select class="form-control"asp-for="ProductGroup.ParentId">
+                            <option selected value="">این دسته بندی یک دسته بندی اصلی است</option>
+                            @foreach (var productGroup in _productService.GetProductGroups().Where(t => t.ParentId == null))
+                            {
+                                <option value="@productGroup.Id">@productGroup.Title</option>
+
+                            }
+                        </select>
+                    </div>
+
+                    <input type="submit" value="ثبت دسته بندی" class="btn btn-success" />
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,15 @@
+﻿@if (ViewBag.IsValidate == true)
+{
+    <div class="bg-success alert-success">
+        <p>(ایمیل شما با موفقیت تایید شد)</p>
+        <p>از الان میتوانید سبد های خرید خود را نهایی کنید! </p>
+    </div>
+}
+@if (ViewBag.Error == true)
+{
+    <div class="bg-danger alert-danger">
+        <p>کد فعالسازی اعتبار ندارد!</p>
+        <p>جهت دریافت کد جدید روی لینک زیر کلیک کنید</p>
+        <a>دریافت کد تایید جدید</a>
+    </div>
+}

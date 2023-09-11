@@ -1,0 +1,29 @@
+﻿@using Azin.Shadi.Core.Convertors;
+@using Azin.Shadi.DAL.Entities.Comment;
+@model Tuple<int,List<Comment>>
+@{
+    Layout = null;
+}
+
+@foreach (var comment in Model.Item2)
+{
+    <div class="comment-row">
+        <img src="~/images/UserProfile/@comment.User.ProfileName">
+        <div class="left-col">
+            <h3> @comment.User.Name </h3>
+            <span>@comment.CreateDate.ToShamsi()</span>
+            <p>
+                @comment.Text
+            </p>
+        </div>
+    </div>
+}
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">            
+        @for (int i = 1; i <= Model.Item1; i++)
+        {
+            <li class="page-item"><a class="page-link" id="paging" onclick="pageComment(@i)">@i</a></li>
+        }              
+    </ul>
+</nav>

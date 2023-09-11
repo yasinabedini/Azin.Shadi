@@ -1,0 +1,7 @@
+﻿@using Azin.Shadi.DAL.Entities.User
+@model User
+<div dir="rtl">
+    <h2>@Model.Name عزیز!</h2>
+    <p>برای تایید آدرس ایمیل خود روی لینک زیر کیکی کنید..</p>
+    <a href="https://localhost:7184/Account/ValidateEmail/@Model.ActivationCode">جهت تایید ایمیل خود کلیک کنید!</a>
+</div>

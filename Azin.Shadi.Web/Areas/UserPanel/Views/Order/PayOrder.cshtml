@@ -1,0 +1,117 @@
+﻿@using Azin.Shadi.Core.DTOs;
+@model PayOrderViewModel
+@{
+    ViewData["Title"] = "پرداخت سفارش";
+    string discountStatus = Context.Request.Query["discountStatus"].ToString();
+}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">فروشگاه تولد آذین</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> پرداخت سفارش </li>
+        </ul>
+    </nav>
+</div>
+
+<main>
+    <div class="container">
+        <div class="user-account pay-order">
+            <form action="/PayOrder" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="SumPrice" />
+                <input type="hidden" asp-for="ProductCount" />
+                <input type="hidden" asp-for="Address" />
+                <div class="row">
+                    <partial name="_SideBar" />
+                    <div class="col-md-9 col-sm-8 col-xs-12">
+                        <section class="user-account-content">
+                            <header><h1> پرداخت سفارش </h1></header>
+                            <div class="inner payment-method form-layer">
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                        <p>انتخاب روش پرداخت</p>
+                                        <i class="bi-credit-card"></i>
+                                        <input type="radio" asp-for="PaymentMethod" value="1" />
+                                        <label>پرداخت آنلاین</label>
+                                        <p>پرداخت آنلاین با تمامی کارت ها</p>
+                                        <hr />
+                                        <i class="bi-cash"></i>
+                                        @if (Model.UserWalletBalance < Model.SumPrice)
+                                        {
+                                            <input type="radio" disabled asp-for="PaymentMethod" value="2" />
+                                        }
+                                        else
+                                        {
+                                            <input type="radio" asp-for="PaymentMethod" value="2" />
+                                        }
+
+                                        <label>پرداخت از کیف پول</label>
+                                        <p>
+                                            موجودی کیف پول : @Model.UserWalletBalance تومان
+                                            @if (Model.UserWalletBalance < Model.SumPrice)
+                                            {
+                                                <a href="https://localhost:7184/userpanel/WalletRecharge" class="text-danger">(لطفا کیف پول خود را شارژ کنید)</a>
+                                            }
+                                        </p>
+                                        <hr />
+                                        <i class="bi-coin"></i>
+                                        <p>کد تخفیف : </p>
+                                        <input type="text" id="code" class="form-control d-xl-block" />
+                                        <a onclick="setHref(@Model.Id)" id="discountLink" class="btn btn-danger">اعمال کد تخفیف</a>
+                                        @switch (discountStatus)
+                                        {
+                                            case "Success":
+                                                <p class="text-success">کد تخفیف با موفقیت اعمال شد.</p>
+                                                break;
+                                            case "Finished":
+                                                <p class="text-danger">کد تخفیف تمام شده است</p>
+                                                break;
+                                            case "NotFound":
+                                                <p class="text-danger">کد تخفیف نامعتبر است!</p>
+                                                break;
+                                            case "Expired":
+                                                <p class="text-danger">کد تخفیف منقضی شده است</p>
+                                                break;
+                                            case "Usable":
+                                                <p class="text-warning">کد تخفیف قبلا توسط شما استفاده شده است!</p>
+                                                break;
+
+                                            default:
+                                                break;
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 order-product-image">
+                                        <i class="bi bi-cart"></i>
+                                        <p>خلاصه سفارش</p>
+                                        <p>زمان تحویل:تحویل از 3 تا 7 روز</p>
+                                        <p>هزینه کالا ها (@Model.ProductCount) : @Model.SumPrice تومان</p>
+                                        <p>هزینه ارسال : 25000 تومان</p>
+                                        <hr />
+                                        <p>مبلغ قابل پرداخت : @Model.SumPrice تومان</p>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <input type="submit" class="btn btn-danger col-md-12 col-sm-12 col-xs-12" value="پرداخت سفارش" />
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+@section Scripts{
+    <script>
+        function setHref(id) {
+            var code = document.getElementById("code").value;
+            document.getElementById("discountLink").setAttribute("href", "https://localhost:7184/AffectDiscount/" + id + "/?code=" + code);
+        }
+    </script>
+}

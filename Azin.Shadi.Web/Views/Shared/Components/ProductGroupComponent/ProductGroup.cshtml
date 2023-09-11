@@ -1,0 +1,27 @@
+﻿@using Azin.Shadi.DAL.Entities.Product;
+@model IEnumerable<ProductGroup>
+
+<div class="main-menu">
+    <div class="container">
+        <nav>
+            <span class="responsive-sign"><i class="zmdi zmdi-menu"></i></span>
+            <ul>
+                @foreach (var productGroup in Model.Where(t => t.ParentId == null))
+                {
+                    <li>
+                        <a href=""> @productGroup.Title </a>
+                        @if (Model.Any(t => t.ParentId == productGroup.Id))
+                        {
+                            <ul>
+                                @foreach (var subGroup in Model.Where(t => t.ParentId == productGroup.Id))
+                                {
+                                    <li><a href="https://localhost:7184/Product?selectedGroups=@subGroup.Id"> @subGroup.Title </a></li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

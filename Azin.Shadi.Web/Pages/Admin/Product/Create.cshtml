@@ -1,0 +1,117 @@
+﻿@page
+@using Azin.Shadi.DAL.Entities.Product;
+@model Azin.Shadi.Web.Pages.Admin.Product.CreateModel
+@{
+    List<ProductGroup> Groups = ViewData["Groups"] as List<ProductGroup> ?? new List<ProductGroup>();
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">افزودن محصول جدید</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <form method="post" enctype="multipart/form-data">
+        <div class="col-md-8">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    اطلاعات محصول
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>نام کالا </label>
+                        <input type="text" asp-for="Product.Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>نام دسته بندی کالا </label>
+                        <select asp-for="Product.ProductGroupId" class="form-control form-select">
+                            @foreach (var MainGroup in Groups.Where(t => t.ParentId == null))
+                            {
+                                <optgroup label="@MainGroup.Title">
+                                    @foreach (var subGroup in Groups.Where(t => t.ParentId == MainGroup.Id))
+                                    {
+                                        <option value="@subGroup.Id">@subGroup.Title</option>
+
+                                    }
+                                </optgroup>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>توضیحات محصول</label>
+                        <textarea class="form-control" rows="5" asp-for="Product.Description"></textarea>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>موجودی کالا</label>
+                        <input type="number" asp-for="Product.Inventory" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>قیمت محصول</label>
+                        <input type="number" asp-for="Product.Price" min="1000" step="500" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>وضعیت کالا</label>
+                        <select asp-for="Product.StatusId" class="form-control" asp-items="@ViewData["Statuses"] as SelectList"></select>
+                    </div>
+                    <input type="submit" value="ذخیره اطلاعات" class="btn btn-success" />
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    تصاویر کالا
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <img id="imgAvatar" class="thumbnail" src="~/images/userprofile/default-profile.jpg" />
+                    <div class="form-group">
+                        <label></label>
+                        <input class="form-control-file" name="productPictureUp" id="productPictureUp" type="file" />
+                    </div>
+                    <div class="form-group">
+                        <label>توضیحات سئو</label>
+                        <textarea asp-for="Product.HideDescription" class="form-control" rows="5"></textarea>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+@section Scripts
+    {
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#productPictureUp").change(function () {
+            readURL(this);
+        });
+    </script>
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script>
+
+        CKEDITOR.replace('Product_Description', {
+            customConfig: '/js/Config.js'
+        });
+
+    </script>
+    }

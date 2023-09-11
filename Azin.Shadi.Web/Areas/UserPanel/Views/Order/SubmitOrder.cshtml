@@ -1,0 +1,72 @@
+﻿@using Azin.Shadi.DAL.Entities.Order;
+@model Order
+@{
+    ViewData["Title"] = "پرداخت سفارش";
+}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">فروشگاه تولد آذین</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> پرداخت سفارش </li>
+        </ul>
+    </nav>
+</div>
+
+<main>
+    <div class="container">
+        <div class="user-account pay-order">
+            <form action="/submitOrder" method="post">
+                <input type="hidden" value="@Model.Id" name="id" />                
+                <div class="row">
+                    <partial name="_SideBar" />
+                    <div class="col-md-9 col-sm-8 col-xs-12">
+                        <section class="user-account-content">
+                            <header><h1> پرداخت سفارش </h1></header>
+                            <div class="inner form-layer">
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                        <p>آدرس تحویل سفارش</p>
+                                        <i class="bi bi-geo-alt"></i>
+                                        <p>@Model.User.Address</p>
+                                        <p>گیرنده : @Model.User.Name</p>
+                                        <a class="@((string.IsNullOrEmpty(Model.User.Address))?"hidden":"")" onclick="ChagneAddress()">تغییر یا ویرایش آدرس</a>
+                                        <textarea id="addressText" placeholder="@Model.User.Address" class="form-control @((string.IsNullOrEmpty(Model.User.Address))?"":"hidden")" name="address" rows="5"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 order-product-image">
+                                        <i class="bi bi-truck"></i>
+                                        <p>ارسال کالا پستی</p>
+                                        <br />
+                                        @foreach (var orderLines in Model.OrderLines)
+                                        {
+                                            <a href="https://localhost:7184/ShowProduct/@orderLines.Product.Id">
+                                                <img class="" src="/images//Product//Thumb/@orderLines.Product.PictureName" />
+                                            </a>
+                                        }
+                                        <p>زمان تحویل:تحویل از 3 تا 7 روز</p>
+                                        <p>هزینه ارسال : 25000 تومان</p>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <input type="submit" href="/payOrder/@Model.Id" class="btn btn-danger col-md-12 col-sm-12 col-xs-12" value="ثبت نهایی سفارش" />
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+@section Scripts{
+    <script>
+        function ChagneAddress(){
+            document.getElementById("addressText").setAttribute("class", "d-block form-control");
+        }
+    </script>
+}

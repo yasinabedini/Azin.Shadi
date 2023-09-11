@@ -1,0 +1,76 @@
+﻿@page "{id}"
+@using Azin.Shadi.DAL.Entities.Permission;
+@model Azin.Shadi.Web.Pages.Admin.Role.EditModel
+@{
+    List<Permission> CurrentPermissions = ViewData["CurrentPermission"] as List<Permission> ?? new List<Permission>();
+    List<Permission> permissions = ViewData["Permissions"] as List<Permission> ?? new List<Permission>();
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">ویرایش کاربر</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <form method="post" asp-page="Edit" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Role.RoleId" />
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    اطلاعات کاربر
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>عنوان نقش</label>
+                        <input type="text" asp-for="Role.Title" class="form-control">
+                    </div>
+                    <input type="submit" value="ویرایش اطلاعات" class="btn btn-success" />
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    سطوح دسترسی
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <ul style="list-style:none">
+                        @foreach (var permission in permissions.Where(t => t.ParentId == null))
+                        {
+                            <li>
+                                <input type="checkbox" name="permissionChecked" @((CurrentPermissions.Any(t => t.Id == permission.Id) ? "checked" : "")) value="@permission.Id" )) /> @permission.PermissionTitle
+                            </li>
+
+                            <ul style="list-style:none">
+                                @foreach (var sub in permissions.Where(t => t.ParentId == permission.Id))
+                                {
+                                    <li>
+                                        <input type="checkbox" name="permissionChecked" value="@sub.Id" @((CurrentPermissions.Any(t => t.Id == sub.Id) ? "checked" : "")) /> @sub.PermissionTitle
+                                    </li>
+
+                                    <ul style="list-style:none">
+                                        @foreach (var sub2 in permissions.Where(t => t.ParentId == sub.Id))
+                                        {
+                                            <li>
+                                                <input type="checkbox" name="permissionChecked" @((CurrentPermissions.Any(t=>t.Id==sub2.Id)?"checked":"")) value="@sub2.Id" /> @sub2.PermissionTitle
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </ul>
+                        }
+
+                    </ul>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+
+        </div>
+
+    </form>
+</div>

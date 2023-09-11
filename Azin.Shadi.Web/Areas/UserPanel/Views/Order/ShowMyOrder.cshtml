@@ -1,0 +1,124 @@
+﻿@using Azin.Shadi.DAL.Entities.Order;
+@model Order
+@{
+    ViewData["Title"] = "نهایی کردن سفارش";
+}
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">فروشگاه تولد آذین</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> مشاهده سفارش </li>
+        </ul>
+    </nav>
+</div>
+
+<main>
+    <div class="container">
+        <div class="user-account order-details">
+            <div class="row">
+                <partial name="_SideBar" />
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    <section class="user-account-content">
+                        <header>
+                            <h1> جزئیات سفارش </h1>
+                            @if (Context.Request.Query["paySuccess"].ToString().ToLower() == "true")
+                            {
+                                <div class="alert alert-success">
+                                    <p class="help-block">سبد خرید با موفقیت پرداخت شد. منتظر رسیدن سفارش خود باشید.</p>
+                                </div>
+                            }
+                        </header>
+                        @if (ViewBag.PaySuccess == true)
+                        {
+                            <p class="text-success">سفارش با موفقیت پرداخت شد!</p>
+                        }
+                        @if (ViewBag.NullCart == true)
+                        {
+                            <div class="inner form-layer">
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-8 col-xs-12">
+                                        <p class="text-danger text-center">سبد خرید شما فعلا خالی است!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="inner form-layer">
+
+                                <div class="row">
+                                    <div class="col-md-5 col-sm-8 col-xs-12">
+                                        <p>تحویل مرسوله در بازه ی نامشخص</p>
+                                    </div>
+                                    <div class="col-md-5 col-sm-8 col-xs-12 ">
+                                        <p class="text-warning float-left">@Model.OrderStatus.Title</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p class="col-md-6 col-sm-8 col-xs-12"> هزینه ارسال : رایگان <i class="bi bi-circle-fill"></i>  مبلغ مرسوله : <span>@Model.SumPrice تومان</span></p>
+                                    <p class="col-md-6 col-sm-8 col-xs-12">کد پیگیری مرسوله : 147283041</p>
+                                </div>
+                                @if (!string.IsNullOrEmpty(ViewBag.TrackingCode))
+                                {
+                                    <div class="row">
+                                        <div class="col-md-10 col-sm-8 col-xs-12 ">
+                                            <p>با استفاده از سامانه رهگیری پست می توانید از وضعیت مرسوله خود با خبر شوید.</p>
+                                            <p>کد رهگیری :<span>@ViewBag.TrackingCode</span></p>
+                                            <a href="#">سایت رهگیری مرسوله</a>
+                                        </div>
+                                    </div>
+                                }
+                                <hr />
+                                @foreach (var orderLine in Model.OrderLines ?? new List<OrderLine>())
+                                {
+                                    <div class="row product-order-detail">
+                                        <img class="col-md-4 col-sm-8 col-xs-12" src="/images/Product/Thumb/@orderLine.Product.PictureName" />
+                                        <p>@orderLine.Product.Name</p>
+                                        <i class="bi bi-shop"></i>
+                                        <p>فروشگاه تولد آذین</p>
+                                        <br />
+                                        <div>
+                                            <input type="number" disabled value="@orderLine.Count" />
+                                            <i class="bi-plus"></i>
+                                            <i class="bi-dash"></i>
+                                            <p class="disabled d-md-block">قیمت تکی : @orderLine.Price تومان</p>
+                                        </div>
+                                        <i class="bi bi-cash"></i>
+                                        <p>@orderLine.SumPrice تومان</p>
+                                    </div>
+                                    <hr />
+                                }
+                                <div class="row">
+                                    @if (Model.IsPay)
+                                    {
+                                        <p class="text-success fw-bold text-center fs-3">سفارش با موفقیت پرداخت گردیده است.</p>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-success col-md-12 col-sm-8 col-xs-12" href="/submitorder/@Model.Id">ثبت سفارش</a>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts{
+
+    <script>
+        function fadeOut() {
+            $(".alert").fadeToggle(500, "swing", function () {
+                this.remove();
+            });
+        }
+
+        var delay = 3000; //3 seconds
+        setTimeout(fadeOut, delay);
+    </script>
+}

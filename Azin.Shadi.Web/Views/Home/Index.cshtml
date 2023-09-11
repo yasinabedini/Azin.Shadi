@@ -1,0 +1,84 @@
+﻿@using Azin.Shadi.Core.DTOs;
+@using Azin.Shadi.Core.Services.Interfaces;
+@model List<ShowProductViewModel>
+@{
+    ViewData["Title"] = "خانه";
+    List<ShowProductViewModel> popularProduct = ViewBag.popularProduct as List<ShowProductViewModel> ?? new List<ShowProductViewModel>();
+}
+
+@section MetaTag{
+
+    <meta name=description content="فروشگاه تولد آذین - فروش لوازم تولد،  آتش بازی،  کادویی، اکسسوری و کلی محصولات جذاب">
+    <meta name=googlebot content=index,follow>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="Fa" />
+
+    <meta property=og:site_name value="فروشگاه تولد آذین">
+    <meta property=og:title content="محصولات آذین">
+    <meta property=og:url content="https://Azinshadi.ir" />
+    <meta property=og:image content="~/images/logo.png">
+    <meta property=og:image:url content="~/images/logo.png" />
+    <meta property=og:image:width content="500">
+
+    <meta property=og:image:type content="image/jpg">
+    <meta property=og:description content="فروشگاه تولد آذین - فروش لوازم تولد،  آتش بازی،  کادویی، اکسسوری و کلی محصولات جذاب ">
+    <meta property=og:price:currency content="IRR">
+    <meta property=og:locale content="ir_FA">
+}
+
+@section SearchBox
+    {    
+        <header>
+        <cache expires-after="@TimeSpan.FromDays(50)">
+            <a href="" class="logo"><img src="/images/logo.png"></a>
+        </cache>
+            <h1> فروشگاه لوازم تولد و کادویی آذین </h1>
+            <h2>فروش انواع بادکنک لاتکس، لوازم آتش بازی، تم تولد، زیور آلات، عروسک و کادویی </h2>
+            <h3> میزبان شادی شما هستیم </h3>
+        </header>
+        <div class="search-form">
+            <form action="/product" method="get">
+                <input type="text" name="Filter" placeholder="واسه جشن تولدت چی لازم داری ؟">
+                <button><i class="zmdi zmdi-search"></i></button>
+            </form>
+        </div>    
+}
+
+
+
+<main id="home-page">
+    <div class="container">
+        <section class="terms-items">
+            <header>
+                <h2> آخرین محصولات آذین </h2>
+                <a asp-controller="Product" asp-action="Index"> مشاهده همه محصولات </a>
+            </header>
+            <cache expires-after="@TimeSpan.FromMinutes(2)">
+                <div class="row">
+                    @foreach (var product in Model)
+                    {
+                        <partial name="ShowProductDemo" model="product" />
+                    }
+                </div>
+            </cache>
+        </section>
+
+        <hr>
+
+        <section class="terms-items">
+            <header>
+                <h2>محصولات پر فروش آذین</h2>
+                <a asp-controller="Product" asp-action="Index"> مشاهده همه محصولات </a>
+            </header>
+            <cache expires-after="@TimeSpan.FromMinutes(30)">
+                <div class="row">
+                    @foreach (var product in popularProduct.Take(8))
+                    {
+                        <partial name="ShowProductDemo" model="product" />
+                    }
+                </div>
+            </cache>
+        </section>
+    </div>
+</main>
+

@@ -1,0 +1,151 @@
+﻿@using Azin.Shadi.Core.DTOs;
+@using Azin.Shadi.DAL.Entities.Product;
+@model List<ShowProductViewModel>;
+@{
+    int pageCount = (int)ViewBag.pageCount;
+    string filter = Context.Request.Query["filter"].ToString();
+    string orderBy = Context.Request.Query["orderBy"].ToString();
+    string typeBy = Context.Request.Query["typeBy"].ToString();
+}
+
+@section MetaTag{
+
+    <meta name=description content="فروشگاه تولد آذین - توی آذین هرچی رو بخوای میتونی پیدا کنی سفارش بدی دم در خونت تحویل بگیری! - لوازم تولد و شادی، اکسسوری، آتش بازی، کادویی، عروسک ایرانی و خارجی و کلی محصولات جذاب و متنوع دیگه">
+    <meta name=googlebot content=index,follow>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="Fa" />    
+
+    <meta property=og:site_name value="فروشگاه تولد آذین">
+    <meta property=og:title content="محصولات آذین">
+    <meta property=og:url content="https://Azinshadi.ir" />
+    <meta property=og:image content="">
+    <meta property=og:image:url content="~/images/logo.png" />
+    <meta property=og:image:width content="500">
+
+    <meta property=og:image:type content="image/jpg">
+    <meta property=og:description content="فروشگاه تولد آذین - فروش لوازم تولد،  آتش بازی،  کادویی، اکسسوری و کلی محصولات جذاب ">
+    <meta property=og:price:currency content="IRR">
+    <meta property=og:locale content="ir_FA">
+}
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">فروشگاه تولد آذین</a></li>
+            <li class="breadcrumb-item active"><a href="#">محصولات</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="container">
+    <form id="formFilter" action="/Product" method="get">
+        <input type="hidden" id="pageid" name="pageId" value="@ViewBag.pageId.ToString()" />
+        <section class="term-categories">
+
+            <div class="top-bar">
+
+                <header>
+                    <h1>محصولات</h1>
+                </header>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-xs-12 pull-right">
+                        <div class="input">
+                            <input type="text" name="Filter" value="@Context.Request.Query["Filter"]" placeholder="موضوع مورد نظر ...">
+                            <button><i class="zmdi zmdi-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 pull-right">
+                        <div class="switch-field available">
+                            <input id="available-filter-2" name="typeBy" onclick="changeGroup()" value="LastProducts" type="radio" @((Context.Request.Query["typeBy"].ToString().ToLower() == "lastproducts") ? "checked" : "")>
+                            <label for="available-filter-2"> آخرین محصولات </label>
+                            <input id="available-filter-1" name="typeBy" onclick="changeGroup()" value="MostSelection" type="radio" @((Context.Request.Query["typeBy"].ToString().ToLower() == "mostselection") ? "checked" : "")>
+                            <label for="available-filter-1"> پرفروش ترین ها </label>
+                            <input id="available-filter-3" name="typeBy" onclick="changeGroup()" value="MostPopular" type="radio" @((Context.Request.Query["typeBy"].ToString().ToLower() == "mostpopular") ? "checked" : "")>
+                            <label for="available-filter-3">محبوب ترین</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 pull-right">
+                        <div class="switch-field available">
+                            <input id="available-filter-4" name="orderBy" onclick="changeGroup()" value="MostPrice" type="radio" @((Context.Request.Query["orderBy"].ToString().ToLower() == "mostprice") ? "checked" : "")>
+                            <label for="available-filter-4"> بیشترین قیمت </label>
+                            <input id="available-filter-5" name="orderBy" onclick="changeGroup()" value="LessPrice" type="radio" @((Context.Request.Query["orderBy"].ToString().ToLower() == "lessprice") ? "checked" : "")>
+                            <label for="available-filter-5"> کمترین قیمت </label>
+                            <input id="available-filter-6" name="orderBy" onclick="changeGroup()" value="Available" type="radio" @((Context.Request.Query["orderBy"].ToString().ToLower() == "available") ? "checked" : "")>
+                            <label for="available-filter-6"> کالا های موجود </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+
+                <aside class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+
+                    <section class="aside-section filter-by-category">
+                        <header>
+                            <h3> دسته بندی موضوعات </h3>
+                        </header>
+                        <div class="inner">
+                            @{
+                                List<ProductGroup> groups = ViewBag.Groups as List<ProductGroup>;
+                                List<int> selected = ViewBag.selectedGroups as List<int>;
+                            }
+                            <ul>
+                                @foreach (var group in groups.Where(t => t.ParentId == null))
+                                {
+                                    <li>
+                                        <input onchange="changeGroup()" type="checkbox" @((selected.Any(s => s == group.Id) ? "checked" : "")) name="selectedGroups" value="@group.Id" id="cat-1">
+                                        <label for="cat-1"> @group.Title </label>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </section>
+
+                </aside>
+
+                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+
+                    <section class="terms-items">
+                        <div class="row " id="product-list">
+                            @foreach (var item in Model)
+                            {
+                                <partial name="ShowProductDemo" model="@item" />
+                            }
+                        </div>
+
+
+                        @if (pageCount > 0)
+                        {
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+
+                                    @for (int i = 1; i <= pageCount; i++)
+                                    {
+                                        <li class="page-item"><a class="page-link" href="/product?pageId=@i">@i</a></li>
+
+                                    }
+                                </ul>
+                            </nav>
+                        }
+
+                    </section>
+
+                </div>
+            </div>
+        </section>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="~/css/nouislider.min.js"></script>
+    <script src="~/js/script.js"></script>
+    <script type="text/javascript">
+
+        function changeGroup() {
+            $("#formFilter").submit();
+        }
+    </script>
+}

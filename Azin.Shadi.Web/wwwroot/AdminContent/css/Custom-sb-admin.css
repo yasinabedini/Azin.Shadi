@@ -1,0 +1,12 @@
+﻿.admin-show-order-orderLines img {
+    width: 100px;
+    height: 100px;
+}
+
+.admin-show-order p{
+    display:inline;
+}
+
+.admin-show-order .panel-heading:first-of-type p:nth-of-type(2) {
+    float: left;
+}

@@ -1,0 +1,13 @@
+﻿@using Azin.Shadi.Core.DTOs;
+@using Azin.Shadi.Core.Services.Interfaces;
+@model ShowProductViewModel
+@inject IProductService _productService;
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col">
+    <article>
+        <a href="/ShowProduct/@Model.Id" class="img-layer"><img src="~/images//Product/Thumb/@Model.PictureName"></a>
+        <h2><a href=""> @Model.Name </a></h2>
+        <span>@Model.Price تومان</span>
+        <i>@_productService.GetProductSellsNumber(Model.Id) فروش</i>
+    </article>
+</div>            

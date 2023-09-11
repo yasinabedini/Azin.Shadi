@@ -1,0 +1,54 @@
+﻿@using Azin.Shadi.Core.Convertors;
+@using Azin.Shadi.DAL.Entities.Order;
+@model List<Order>
+@{
+    ViewData["Title"] = "سفارش های من";
+}
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">فروشگاه تولد آذین</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> سفارش ها </li>
+        </ul>
+    </nav>
+</div>
+
+<main>
+    <div class="container">
+        <div class="user-account my-orders">
+            <div class="row">
+                <partial name="_SideBar" />
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    <section class="user-account-content">
+                        <header><h1> سفارشات </h1></header>
+                        <div class="inner form-layer">
+                            @foreach (var order in Model)
+                            {
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-10 col-xs-12">
+                                        <span class="bi @((order.StatusId==3)?"bi-box":"") @((order.StatusId==4)?"bi-check-circle":"")  text-success"></span>
+                                        <p>@order.OrderStatus.Title</p>
+                                        <p><span class="disabled">@order.CreateDate.ToShamsi()</span> - کد سفارش : 1212121 - مبلغ : @order.SumPrice</p>
+                                        
+                                        <div class="order-product-image"> 
+                                            @foreach (var orderLines in order.OrderLines)
+                                            {
+                                                <a href="https://localhost:7184/ShowProduct/@orderLines.Product.Id">
+                                                    <img class="img-thumbnail" src="/images//Product//Thumb/@orderLines.Product.PictureName" />
+                                                </a>
+                                            }
+                                        </div>
+
+                                        <a href="/showMyOrder/@order.Id" target="_blank" class="text-success showFactor">مشاهده سفارش</a>
+                                    </div>
+                                </div>
+                                <hr class="fw-bold" />
+                            }
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

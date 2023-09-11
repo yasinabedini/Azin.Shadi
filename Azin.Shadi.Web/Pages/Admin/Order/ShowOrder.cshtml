@@ -1,0 +1,117 @@
+﻿@page "{id}"
+@model Azin.Shadi.Web.Pages.Admin.Order.ShowOrderModel
+@{
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">مشاهده سفارش</h1>        
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary admin-show-order">
+            <div class="panel-heading">
+                <p>جزئیات سفارش</p>
+                <p>@Model.Order.OrderStatus.Title</p>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="form-group ">
+                    <label>شماره فاکتور : </label>
+                    <p>@Model.Order.Id</p>
+                </div>
+                <div class="form-group ">
+                    <label>نام کاربر سفارش دهنده : </label>
+                    <p>@Model.Order.User.Name</p>
+                </div>
+
+                @if (Model.Order.OrderLines != null && Model.Order.OrderLines.Any())
+                {
+                    <hr />
+                    <div class="form-group ">
+                        <label>لیست محصولات : </label>
+                    </div>
+                    <div class="form-group admin-show-order-orderLines">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>نام کالا</th>
+                                <th>قیمت کالا</th>
+                                <th>تعداد</th>
+                                <th>قیمت کل</th>
+                            </tr>
+                            @foreach (var orderline in Model.Order.OrderLines)
+                            {
+                                <tr>
+                                    <td><a href="/ShowProduct/@orderline.Product.Id">@orderline.Product.Name</a></td>
+                                    <td>@orderline.Product.Price</td>
+                                    <td>@orderline.Count</td>
+                                    <td>@orderline.SumPrice</td>
+                                </tr>
+                            }
+                            <tr>
+                                <td colspan="3">جمع کل</td>                               
+                                <td>@Model.Order.OrderLines.Sum(t=>t.SumPrice)</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <hr />
+                }
+                <div class="form-group ">
+                    <label>اطلاعات پرداخت  : </label>
+                </div>
+                <div class="form-group ">
+                    <label>قیمت نهایی سفارش : </label>
+                    <p>@Model.Order.SumPrice تومان</p>
+                </div>
+                <div class="form-group ">
+                    <label>وضعیت پرداخت  : </label>
+                    @if (Model.Order.IsPay)
+                    {
+                        <p class="text-success">پرداخت شده</p>
+                        <span>(<a>مشاهده فاکتور</a>)</span>
+                    }
+                    else
+                    {
+                        <p class="text-danger">پرداخت نشده</p>
+                    }
+                </div>
+               @if (Model.Order.Forward!=null)
+                {
+                    <hr />
+                    <div class="form-group ">
+                        <label>اطلاعات ارسال  : </label>
+                        @if (Model.Order.Forward.IsForward)
+                        {
+                            <span><p class="text-success">سفارش ارسال شده است</p></span>
+                        }
+                    </div>
+                    <div class="form-group ">
+                        <label>آدرس : </label>
+                        <p>@Model.Order.Forward.Address</p>
+                    </div>
+                    <div class="form-group ">
+                        <label>شماره تماس : </label>
+                        <p>09106966244</p>
+                    </div>
+                    @if (!string.IsNullOrEmpty(Model.Order.Forward.TrackingCode))
+                    {
+                        <div class="form-group ">
+                            <label>کد رهگیری پستی : </label>
+                            <p>@Model.Order.Forward.TrackingCode</p>
+                        </div>
+                    }
+                    @if (!Model.Order.Forward.IsForward)
+                    {
+                        <div class="form-group ">
+                            <a asp-page="sendorder" asp-route-id="@Model.Order.Id" class="btn btn-success">ارسال سفارش</a>
+                        </div>
+                    }
+                }
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>

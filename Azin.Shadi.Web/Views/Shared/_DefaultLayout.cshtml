@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html class="no-js" dir="rtl" lang="fa-IR">
+<head>
+    <meta charset="UTF-8">
+    <title>آذین | @ViewData["Title"] </title>
+    <partial name="_MetaTags" />
+    @RenderSection("MetaTag",false)
+    <partial name="_Styles" />    
+    <script src="/js/jquery.min.js"></script>
+</head>
+<body>
+    <script src="/js/modernizr-custom.js"></script>
+
+    <div class="landing-layer">
+        <div class="container">
+            <nav>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <ul>
+                            <li>
+                                <i class="bi bi-house-door"></i>
+                                <a href="/"> صفحه اصلی </a>
+                              @if (User.Identity.IsAuthenticated)
+                                {
+                                    <i class="bi bi-cart4"></i>
+                                    <a href="/MyCart"> سبد خرید  </a>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="clientarea">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="loggein text-black">
+                                    <i class="bi bi-person-fill"></i><a href="\Userpanel/Profile"> @User.Identity.Name ، خوش آمدی </a> /
+                                    <a href="/LogOut"> خروج </a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="signin">
+                                    <i class="bi bi-person-fill"></i>
+                                    <a href="/Login"> ورود </a> /
+                                    <a href="/Register"> عضویت </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            @RenderSection("SearchBox", false)
+        </div>
+    </div>
+
+    <!-- main manu -->
+    @await Component.InvokeAsync("ProductGroupComponent")
+    
+    <!-- /main manu -->
+    <!-- content -->
+    @RenderBody()
+    <!-- /content -->
+    <!-- footer -->
+    <partial name="_Footer" />
+    <!-- /footer -->
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.js"></script>
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>    
+    @RenderSection("Scripts",false)
+
+</body>
+</html>

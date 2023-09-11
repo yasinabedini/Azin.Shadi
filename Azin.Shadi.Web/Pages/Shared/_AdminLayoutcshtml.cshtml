@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=googlebot content=noindex,nofollow>
+
+    <title>پنل مدیریت آذین</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="/AdminContent/css/bootstrap-rtl.css" rel="stylesheet">
+    <link href="/AdminContent/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Page-Level Plugin CSS - Dashboard -->
+    <link href="/AdminContent/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="/AdminContent/css/plugins/timeline/timeline.css" rel="stylesheet">
+    <link href="~/css/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="/AdminContent/css/sb-admin.css" rel="stylesheet">
+    <link href="/AdminContent/css/Custom-sb-admin.css" rel="stylesheet">    
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Admin">AzinShadi.Com</a>
+            </div>
+            <!-- /.navbar-header -->
+
+
+
+            <div class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="/Admin"><i class="fa fa-dashboard fa-fw"></i> پنل ادمین</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> مدیریت سطوح دسترسی<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Admin/Role/Index">لیست نقش ها</a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Role/Create">ثبت نقش جدید</a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Role/DeleteRoleList">لیست نقش های حذف شده</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> مدیریت کاربران<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Admin/User/Create">ثبت کاربر جدید</a>
+                                </li>
+                                <li>
+                                    <a asp-page="index">لیست کاربران</a>
+                                </li>
+                                <li>
+                                    <a asp-page="DeleteUserList">لیست کاربران حذف شده</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> مدیریت محصولات<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Admin/Product/Create">ثبت محصول جدید</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/Product">لیست محصولات</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/ProductGroup/Create">ایجاد دسته بندی جدید</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/ProductGroup">لیست دسته بندی ها  </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/product/DeleteProductList">لیست محصولات حذف شده</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-money fa-fw"></i> مدیریت تخفیف ها<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Admin/discount/Create">ثبت تخفیف جدید</a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/discount">لیست تخفیف جدید</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa bi-basket fa-fw"></i> مدیریت سفارشات<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Admin/order/payedorder">سفارش های نهایی شده</a>
+                                <li>
+
+                                <li>
+                                    <a href="/Admin/order">لیست سفارشات</a>
+                                </li>
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa bi-credit-card-fill"></i> فاکتور ها<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Admin/transaction/TodayTransactions">تراکنش های امروز</a>
+                                <li>
+
+                                <li>
+                                    <a href="/Admin/transaction">لیست فاکتورها</a>
+                                </li>
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+
+                    </ul>
+                    <!-- /#side-menu -->
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <script src="/AdminContent/js/jquery-1.10.2.js"></script>
+    <script src="/AdminContent/js/bootstrap.min.js"></script>
+    <script src="/AdminContent/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="/AdminContent/js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="/AdminContent/js/plugins/morris/morris.js"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="/AdminContent/js/sb-admin.js"></script>
+
+    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+    <script src="/AdminContent/js/demo/dashboard-demo.js"></script>
+    @RenderSection("Scripts",false)
+</body>
+
+</html>

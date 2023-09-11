@@ -1,0 +1,64 @@
+﻿@using Azin.Shadi.Core.Convertors;
+@using Azin.Shadi.Core.DTOs;
+@model UserPanelInformationViewModel
+@{
+    ViewData["Title"] = "پنل کاربری " + User.Identity.Name;
+}
+
+@section MetaTag{
+
+    <meta name=description content="فروشگاه تولد آذین - توی این صفحه میتونی کلی کار انجام بدی، کیف پولتو شارژ کنی سفارشاتو ببینی، مشخصاتت و ویرایش کنی و کلی خدمات دیگه">
+    <meta name=googlebot content=index,follow>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="Fa" />
+
+    <meta property=og:site_name value="فروشگاه تولد آذین">
+    <meta property=og:title content="داشبورد کاربری">
+    <meta property=og:url content="https://Azinshadi.ir/Login" />
+    <meta property=og:image content="~/images/logo.png">
+    <meta property=og:image:url content="~/images/logo.png" />
+    <meta property=og:image:width content="500">
+
+    <meta property=og:image:type content="image/jpg">
+    <meta property=og:description content="فروشگاه تولد آذین -پنل کاربری">
+    <meta property=og:price:currency content="IRR">
+    <meta property=og:locale content="ir_FA">
+}
+
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">فروشگاه تولد آذین</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> پنل کاربری </li>
+        </ul>
+    </nav>
+</div>
+
+<main>
+    <div class="container">
+        <div class="user-account">
+            <div class="row">
+               
+                <partial name="_SideBar" />
+
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    <section class="user-account-content">
+                        <header><h1> داشبورد </h1></header>
+                        <div class="inner">
+                            <div class="account-information">
+                                <h3> اطلاعات کاربری </h3>
+                                <ul>
+                                    <li> <i class="zmdi zmdi-assignment-account"></i> نام کاربری :  @Model.Username </li>
+                                    <li> <i class="zmdi zmdi-email"></i> ایمیل : @Model.Email </li>
+                                    <li> <i class="zmdi zmdi-calendar-check"></i> تاریخ عضویت : @Model.RegisterDate.ToShamsi() </li>
+                                    <li> <i class="zmdi zmdi-account"></i> موجودی کیف پول : @Model.Wallet ریال </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
