@@ -1,0 +1,39 @@
+﻿@using Azin.Shadi.Core.Services.Interfaces;
+@using Azin.Shadi.DAL.Entities.Product;
+@model List<ProductGroup>
+@{
+    List<ProductGroup> ChildCategories = ViewBag.ChildCategories as List<ProductGroup> ?? new List<ProductGroup>();
+}
+
+@section SearchBox{
+    <div class="search-form search-category-panel">
+        <form action="/product" method="get">
+            <input type="text" name="Filter" placeholder="جستجوی محصولات">
+            <button><i class="zmdi zmdi-search"></i></button>
+        </form>
+    </div>
+}
+
+<div class="categories">
+
+    <div class="parent-category">
+        @foreach (var productGroup in Model)
+        {
+            <a asp-controller="Product" asp-action="categories" asp-route-parentCategoryId="@productGroup.Id" class="@((Context.Request.Query["parentCategoryId"].ToString()==productGroup.Id.ToString())?"Current-parent-category":"")">
+                <i class="bi @((string.IsNullOrEmpty(@productGroup.IconName))?"bi-arrow-clockwise":$"{productGroup.IconName}")"></i>
+            <p>@productGroup.Title</p>
+            </a>
+        }
+    </div>
+
+
+    <div class="child-category">
+        @foreach (var category in ChildCategories)
+        {
+            <a>                
+                    <img src="/images/ProductGroup/Thumb/@category.PictureName" />
+                    <p>@category.Title</p>                
+            </a>
+        }
+    </div>
+</div>

@@ -39,20 +39,26 @@
     <div class="container">
         <div class="user-account">
             <div class="row">
-               
+
                 <partial name="_SideBar" />
 
                 <div class="col-md-9 col-sm-8 col-xs-12">
                     <section class="user-account-content">
-                        <header><h1> داشبورد </h1></header>
+                        <header><h1>سفارش های من</h1></header>
                         <div class="inner">
-                            <div class="account-information">
-                                <h3> اطلاعات کاربری </h3>
+                            <div class="account-information">                                
                                 <ul>
-                                    <li> <i class="zmdi zmdi-assignment-account"></i> نام کاربری :  @Model.Username </li>
-                                    <li> <i class="zmdi zmdi-email"></i> ایمیل : @Model.Email </li>
-                                    <li> <i class="zmdi zmdi-calendar-check"></i> تاریخ عضویت : @Model.RegisterDate.ToShamsi() </li>
-                                    <li> <i class="zmdi zmdi-account"></i> موجودی کیف پول : @Model.Wallet ریال </li>
+                                    <li>
+                                        <div>
+                                            <img src="/images/status-delivered.svg" />                                            
+                                            <p>در حال بسته بندی <span>0</span></p>
+                                            
+                                        </div>
+                                        <div>
+                                            <img src="/images/status-processing.svg" />                                            
+                                            <p>تحویل داده شده <span>0</span></p>
+                                        </div>                                       
+                                    </li>
                                 </ul>
                             </div>
                         </div>

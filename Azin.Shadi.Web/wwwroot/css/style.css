@@ -74,120 +74,124 @@ a, i, input[type="submit"], form button {
     position: relative;
 }
 
-    .landing-layer nav {
-        padding: 25px 0
+.mobile-landing-layer {
+    display: none !important;
+}
+
+.landing-layer nav {
+    padding: 25px 0
+}
+
+    .landing-layer nav ul li {
+        display: inline-table;
     }
 
-        .landing-layer nav ul li {
-            display: inline-table;
+        .landing-layer nav ul li a {
+            line-height: 25px;
+            color: #fff;
+            font-size: 14px;
+            padding: 0 0 0 15px
         }
 
-            .landing-layer nav ul li a {
-                line-height: 25px;
-                color: #fff;
-                font-size: 14px;
-                padding: 0 0 0 15px
-            }
-
-        .landing-layer nav .clientarea {
-            text-align: left;
-            color: #fff
-        }
-
-            .landing-layer nav .clientarea i {
-                color: #fff;
-                font-size: 18px;
-                position: relative;
-                top: 3px;
-                margin-left: 4px
-            }
-
-            .landing-layer nav .clientarea a {
-                color: #fff;
-            }
-
-                .landing-layer nav ul li a:hover,
-                .landing-layer nav .clientarea a:hover {
-                    color: #20991d
-                }
-
-    .landing-layer header {
-        padding: 50px 0;
-        text-align: center;
-        color: #fff;
-        word-spacing: -1px
+    .landing-layer nav .clientarea {
+        text-align: left;
+        color: #fff
     }
 
-        .landing-layer header .logo {
-            width: 250px;
-            display: block;
-            margin: 0 auto 20px
-        }
-
-        .landing-layer header h1 {
-            line-height: 30px;
-            padding: 10px 0 20px;
-            font-size: 31px
-        }
-
-        .landing-layer header h2,
-        .landing-layer header h3 {
-            line-height: 30px;
-            padding: 10px 0;
-            font-size: 23px
-        }
-
-    .landing-layer .search-form {
-        width: 500px;
-        margin: 0 auto;
-        padding-bottom: 30px
-    }
-
-        .landing-layer .search-form form {
-            width: 100%;
-            height: 45px;
+        .landing-layer nav .clientarea i {
+            color: #fff;
+            font-size: 18px;
             position: relative;
-            margin-bottom: 50px
+            top: 3px;
+            margin-left: 4px
         }
 
-            .landing-layer .search-form form input {
-                background-color: #fff;
-                border-radius: 3px;
-                -moz-border-radius: 3px;
-                -webkit-border-radius: 3px;
-                width: 100%;
-                line-height: 50px;
-                border: 0;
-                padding: 0 20px 0 60px;
-                color: #2C373B
+        .landing-layer nav .clientarea a {
+            color: #fff;
+        }
+
+            .landing-layer nav ul li a:hover,
+            .landing-layer nav .clientarea a:hover {
+                color: #20991d
             }
 
-            .landing-layer .search-form form button {
-                background-color: darkgoldenrod;
-                color: #fff;
-                font-size: 24px;
-                width: 50px;
-                height: 48px;
-                position: absolute;
-                left: 1px;
-                top: 1px;
-                border: 0;
-                -webkit-border-top-left-radius: 3px;
-                -webkit-border-bottom-left-radius: 3px;
-                -moz-border-radius-topleft: 3px;
-                -moz-border-radius-bottomleft: 3px;
-                border-top-left-radius: 3px;
-                border-bottom-left-radius: 3px;
+.landing-layer header {
+    padding: 50px 0;
+    text-align: center;
+    color: #fff;
+    word-spacing: -1px
+}
+
+    .landing-layer header .logo {
+        width: 250px;
+        display: block;
+        margin: 0 auto 20px
+    }
+
+    .landing-layer header h1 {
+        line-height: 30px;
+        padding: 10px 0 20px;
+        font-size: 31px
+    }
+
+    .landing-layer header h2,
+    .landing-layer header h3 {
+        line-height: 30px;
+        padding: 10px 0;
+        font-size: 23px
+    }
+
+.landing-layer .search-form {
+    width: 500px;
+    margin: 0 auto;
+    padding-bottom: 30px
+}
+
+    .landing-layer .search-form form {
+        width: 100%;
+        height: 45px;
+        position: relative;
+        margin-bottom: 50px
+    }
+
+        .landing-layer .search-form form input {
+            background-color: #fff;
+            border-radius: 3px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            width: 100%;
+            line-height: 50px;
+            border: 0;
+            padding: 0 20px 0 60px;
+            color: #2C373B
+        }
+
+        .landing-layer .search-form form button {
+            background-color: darkgoldenrod;
+            color: #fff;
+            font-size: 24px;
+            width: 50px;
+            height: 48px;
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            border: 0;
+            -webkit-border-top-left-radius: 3px;
+            -webkit-border-bottom-left-radius: 3px;
+            -moz-border-radius-topleft: 3px;
+            -moz-border-radius-bottomleft: 3px;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+            .landing-layer .search-form form button i {
+                position: relative;
+                top: 5px
             }
 
-                .landing-layer .search-form form button i {
-                    position: relative;
-                    top: 5px
-                }
-
-                .landing-layer .search-form form button:hover {
-                    background-color: #2C373B
-                }
+            .landing-layer .search-form form button:hover {
+                background-color: #2C373B
+            }
 
 .main-menu {
     background-color: darkgoldenrod;
@@ -257,7 +261,7 @@ a, i, input[type="submit"], form button {
                     .main-menu nav > ul > li > ul > li > a:hover {
                         transform: scale(1.02);
                         transition-property: transform;
-                        transition-duration:50ms;
+                        transition-duration: 50ms;
                         color: white;
                     }
 
@@ -1213,6 +1217,10 @@ main {
             margin-left: 3px
         }
 
+.categories {
+    display: none !important;
+}
+
 @media screen and (max-width : 991px) {
     .main-menu nav > span {
         display: block;
@@ -1318,6 +1326,41 @@ main {
     .landing-layer nav ul li a {
         padding-right: 0
     }
+
+    .term-col {
+        width: 50%;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+        .term-col article h2 {
+            display: none;
+        }
+
+        .term-col article i:nth-child(4) {
+            display: none;
+        }
+
+        .term-col article span:nth-child(3) {
+            color: gray;
+            font-size: 13px;
+            text-align: center;
+            font-weight: 500
+        }
+
+            .term-col article span:nth-child(3) i:first-child {
+                font-size: 10px;
+                padding: 0;
+            }
+
+        .term-col article a:first-child img {
+            width: 80% !important;
+            padding: 5px;
+        }
+
+        .term-col article {
+            border-radius: 5px !important;
+        }
 }
 
 @media screen and (max-width : 767px) {
@@ -1369,6 +1412,167 @@ main {
     .term-categories > .top-bar > header > span {
         display: none
     }
+
+    .term-col {
+        width: 50%;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+        .term-col article h2 {
+            display: none;
+        }
+
+        .term-col article i:nth-child(4) {
+            display: none;
+        }
+
+        .term-col article span:nth-child(3) {
+            color: gray;
+            font-size: 13px;
+            text-align: center;
+            font-weight: 500
+        }
+
+            .term-col article span:nth-child(3) i:first-child {
+                font-size: 10px;
+                padding: 0;
+            }
+
+        .term-col article a:first-child img {
+            width: 80% !important;
+            padding: 5px;
+        }
+
+        .term-col article {
+            border-radius: 5px !important;
+        }
+
+
+    .landing-layer .row:first-of-type {
+        display: none;
+    }
+
+
+    .mobile-landing-layer {
+        display: block !important;
+        position: fixed !important;
+        bottom: 0;
+        z-index: 100;
+        background-color: #eaeaea;
+        width: 100%;
+        height: 55px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        box-shadow: 0 0 6px #888888;
+    }
+
+        .mobile-landing-layer .container nav .row {
+            display: flex !important;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+            .mobile-landing-layer .container nav .row .bi {
+                font-size: 20px;
+                padding-top: 5px;
+                color: black;
+            }
+
+            .mobile-landing-layer .container nav .row a {
+                text-align: center;
+                color: black
+            }
+
+            .mobile-landing-layer .container nav .row p {
+                font-size: 10px;
+                text-align: center;
+                font-weight: 600
+            }
+
+    .top-footer .container .row div:nth-of-type(1), .top-footer .container .row div:nth-of-type(2) {
+        display: none;
+    }
+
+    .group-items {
+        display: none !important;
+    }
+
+    .main-menu {
+        display: none;
+    }
+
+    .categories {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between !important;
+    }
+
+    /*parent Category*/
+    .parent-category {
+        display: inline-block;
+        width: 20% !important;
+        background-color: rgb(212, 212, 212);        
+        right: 0 !important;
+    }
+
+        .parent-category a {
+            border-left: 2px solid #dbd8d8;
+        }
+
+    .parent-category a {
+        color: black;
+        width: 100%;
+        font-size: 10px !important;
+        text-align: center;
+        border-bottom: 1px solid rgba(40, 39, 39,0.1);
+        padding: 5px 10px;
+        font-weight:600
+    }
+
+        .parent-category .bi {
+            text-align: center;            
+            display: block;
+            padding-top: 10px
+        }
+
+    .Current-parent-category {
+        background-color: #f2f2f2;
+        border:none !important;
+    }
+
+    /*Child Category*/
+    .child-category {
+        width: 70% !important;
+        margin-left: 15px;
+        height: 100%;
+        display: flex;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+
+        .child-category a {
+            padding: 5px;
+            padding-top: 20px;
+            width: 33% !important;
+            height: 120px;
+        }
+
+        .child-category img {
+            width: 100%;
+            height:65px;
+            border-radius: 100%;
+            margin: 0 auto;
+        }
+
+        .child-category p {
+            font-size: 10px;
+            padding-top: 10px;
+            color: black
+        }
 }
 
 @media screen and (max-width : 420px) {

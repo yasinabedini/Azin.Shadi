@@ -37,6 +37,19 @@ namespace Azin.Shadi.Web.Controllers
             return View(_service.GetProducts(pageId, filter, orderBy, typeBy, minPrice, maxPrice, selectedGroups, take));
         }
 
+        [Route("Categories")]
+        public IActionResult Categories(int parentCategoryId = 0)
+        {
+            if (parentCategoryId==0)
+            {
+                parentCategoryId = _service.GetFirstProductGroupId();
+            }
+
+            ViewBag.ChildCategories = _service.GetProductGroupsByParentId(parentCategoryId);
+
+            return View(_service.GetProductGroups().Where(t => t.ParentId == null).ToList());
+        }
+
         [Route("ShowProduct/{id}")]
         public IActionResult ShowProduct(int id, bool addSuccess = false)
         {

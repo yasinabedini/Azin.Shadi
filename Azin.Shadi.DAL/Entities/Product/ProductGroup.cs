@@ -20,6 +20,12 @@ namespace Azin.Shadi.DAL.Entities.Product
         public string Title { get; set; }
         public int? ParentId { get; set; }
 
+        [Display(Name ="عکس دسته بندی")]
+        public string? PictureName { get; set; }
+
+        [Display(Name = "آیکون")]
+        public string? IconName { get; set; }
+
         [ForeignKey("ParentId")]
         public List<ProductGroup> ProductGroups { get; set; }
 

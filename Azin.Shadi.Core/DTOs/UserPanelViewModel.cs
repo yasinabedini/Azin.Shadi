@@ -43,6 +43,12 @@ namespace Azin.Shadi.Core.DTOs
 
         [Display(Name = "تاریخ ثبت نام")]
         public DateTime RegisterDate { get; set; }
+
+        [Display(Name = "ایمیل")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(80, ErrorMessage = "{0} نمی تواند بیشتر از {1} باشد")]
+        [EmailAddress]
+        public string Email { get; set; }
     }
     public class EditProfileViewModel
     {

@@ -31,7 +31,7 @@ public class EditModel : PageModel
     {
         if (!ModelState.IsValid) return Page();
 
-        _service.UpdatePeoduct(Product,productImageUp);
+        _service.UpdateProduct(Product,productImageUp);
         return RedirectToPage("Index");
     }
 }

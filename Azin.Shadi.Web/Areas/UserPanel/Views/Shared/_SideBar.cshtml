@@ -11,30 +11,37 @@
 
 <div class="col-md-3 col-sm-4 col-xs-12">
     <aside>
-
-        <div class="avatar-layer">
-            <div class="img-layer">
-                <a href="" class="change-image"><i class="zmdi zmdi-edit"></i></a>
-                <img src="\images\UserProfile\Thumb\@user.ProfileName">
-            </div>
-            <div class="detail">
-                <span> @user.Name </span>
-                <span> عضویت : @user.RegisterDate.ToShamsi() </span>
-            </div>
-        </div>
-
         <section>
-            <header><h3> میز کار </h3></header>
             <div class="inner">
                 <ul>
-                    <li><a href="/userpanel/profile"> مشاهده حساب کابری </a></li>
-                    <li><a href="/userpanel/editprofile"> ویرایش حساب کابری </a></li>
-                    <li><a href="/Orders"> سفارش های من </a></li>
-                    <li><a href="#"> مشاهده سبد خرید فعلی </a></li>
-                    <li><a href="/userpanel/ChangePassword"> تغییر رمز عبور </a></li>
-                    <li><a href="/userpanel/WalletRecharge"> کیف پول من </a></li>
-                    <li><a href=""> تنظیمات حساب کاربری </a></li>
-                    <li><a href="/LogOut"> خروج از حساب کاربری </a></li>
+                    <li>
+                        <p>@user.Name</p>
+                        <span>@user.Email</span>
+                    </li>
+                    <li>
+                        کیف پول
+                        <span>@_userService.GetWalletBalance(username) تومان</span>
+                        <a asp-area="userpanel" asp-controller="wallet" asp-action="WalletRecharge"> افزایش موجودی</a>
+                    </li>
+                </ul>
+                <hr />
+                <ul>
+                    <li>
+                        <i class="bi-cart3"></i>
+                        <a href="/Orders"> سفارش های من </a>
+                        </li>
+                    <li>
+                        <i class="bi-clipboard2"></i>
+                        <a href="/Orders"> مشاهده فاکتور ها </a>
+                        </li>
+                    <li>
+                        <i class="bi-person"></i>
+                        <a href="/Orders"> اطلاعات حساب کاربری </a>
+                        </li>
+                    <li>
+                        <i class="bi-box-arrow-right"></i>
+                        <a href="/LogOut">خروج از حساب کاربری</></a>
+                    </li>
                 </ul>
             </div>
         </section>

@@ -12,15 +12,19 @@ public interface IProductService
     List<ProductGroup> GetProductGroups();
     List<ProductGroup> GetProductGroupForManageProduct();
     List<SelectListItem> GetProductStatuses();
-    void AddProductGroup(ProductGroup productGroup);
+    void AddProductGroup(ProductGroup productGroup, IFormFile productGroupPicture);
+    ProductGroup GetProductGroupById(int id);
+    void UpdateProductGroup(ProductGroup productGroup, IFormFile productGroupPicture);
+    int GetFirstProductGroupId();
+    List<ProductGroup> GetProductGroupsByParentId(int parentId);
     #endregion
 
     #region Product
     int AddProduct(Product product, IFormFile productImageUp);
     ShowProductForAdminViewModel GetProductsForAdmin(int pageId, string nameFilter, string groupFilter);
     Product GetProductById(int productId);
-    void UpdatePeoduct(Product product, IFormFile productImageUp);
-    List<ShowProductViewModel> GetProducts(int pageId = 1, string filter = "", string orderBy = "", string typeBy = "", int minPrice = 0, int MaxPrice = 0, List<int> selectedGroups = null, int take = 8,bool orderByCreateDate  =false);
+    void UpdateProduct(Product product, IFormFile productImageUp);
+    List<ShowProductViewModel> GetProducts(int pageId = 1, string filter = "", string orderBy = "", string typeBy = "", int minPrice = 0, int MaxPrice = 0, List<int> selectedGroups = null, int take = 8, bool orderByCreateDate = false);
     Product GetProductForShow(int id);
     void DecreaseInventory(int productId, int count);
     int GetProductSellsNumber(int productId);

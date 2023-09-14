@@ -22,9 +22,9 @@ public class CreateModel : PageModel
     {
     }
 
-    public IActionResult OnPost()
+    public IActionResult OnPost(IFormFile? productGroupPictureUp)
     {
-        _productService.AddProductGroup(ProductGroup);
+        _productService.AddProductGroup(ProductGroup, productGroupPictureUp);
         return RedirectToPage("Index");
     }
 }

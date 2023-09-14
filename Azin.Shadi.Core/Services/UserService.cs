@@ -79,7 +79,8 @@ public class UserService : IUserService
         {
             Name = user.Name,
             ProfileName = user.ProfileName,
-            RegisterDate = user.RegisterDate
+            RegisterDate = user.RegisterDate,
+            Email = user.Email
         };
     }
 

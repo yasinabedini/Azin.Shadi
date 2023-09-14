@@ -5,11 +5,77 @@
     <title>آذین | @ViewData["Title"] </title>
     <partial name="_MetaTags" />
     @RenderSection("MetaTag",false)
-    <partial name="_Styles" />    
+    <partial name="_Styles" />
     <script src="/js/jquery.min.js"></script>
 </head>
 <body>
     <script src="/js/modernizr-custom.js"></script>
+
+
+    <div class="mobile-landing-layer">
+        <div class="container">
+            <nav>
+                <div class="row">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="home" asp-action="index">
+                            <div>
+                                <i class="bi bi-house-door"></i>
+                                <p>خانه</p>
+                            </div>
+                        </a>
+                        <a href="/MyCart">
+                            <div>
+                                <i class="bi bi-cart"></i>
+                                <p>سبد خرید</p>
+                            </div>
+                        </a>
+                        <a href="/categories">
+                            <div>
+                                <i class="bi bi-view-list"></i>
+                                <p>دسته بندی</p>
+                            </div>
+                        </a>
+                        <a href="/userpanel/profile">
+                            <div>
+                                <i class="bi bi-person-circle"></i>
+                                <p>پروفایل</p>
+                            </div>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="account" asp-action="register">
+                            <div>
+                                <i class="bi bi-plus-circle-dotted"></i>
+                                <p>عضویت</p>
+                            </div>
+                        </a>
+                        <a href="/categories">
+                            <div>
+                                <i class="bi bi-view-list"></i>
+                                <p>دسته بندی</p>
+                            </div>
+                        </a>
+                        <a asp-controller="home" asp-action="index">
+                            <div>
+                                <i class="bi bi-house-door"></i>
+                                <p>خانه</p>
+                            </div>
+                        </a>
+                        <a asp-controller="account" asp-action="login">
+                            <div>
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                <p>ورود</p>
+                            </div>
+                        </a>                       
+                    }
+                </div>
+            </nav>
+        </div>
+
+    </div>
+
 
     <div class="landing-layer">
         <div class="container">
@@ -20,7 +86,7 @@
                             <li>
                                 <i class="bi bi-house-door"></i>
                                 <a href="/"> صفحه اصلی </a>
-                              @if (User.Identity.IsAuthenticated)
+                                @if (User.Identity.IsAuthenticated)
                                 {
                                     <i class="bi bi-cart4"></i>
                                     <a href="/MyCart"> سبد خرید  </a>
@@ -33,7 +99,7 @@
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <div class="loggein text-black">
-                                    <i class="bi bi-person-fill"></i><a href="\Userpanel/Profile"> @User.Identity.Name ، خوش آمدی </a> /
+                                    <i class="bi bi-person-fill"></i><a href="\Userpanel\Profile"> @User.Identity.Name ، خوش آمدی </a> 
                                     <a href="/LogOut"> خروج </a>
                                 </div>
                             }
@@ -55,7 +121,7 @@
 
     <!-- main manu -->
     @await Component.InvokeAsync("ProductGroupComponent")
-    
+
     <!-- /main manu -->
     <!-- content -->
     @RenderBody()
@@ -68,7 +134,7 @@
     <script src="/js/script.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/jquery.validate.unobtrusive.js"></script>
-    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>    
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
     @RenderSection("Scripts",false)
 
 </body>

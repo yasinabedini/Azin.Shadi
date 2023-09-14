@@ -1,9 +1,11 @@
 ﻿@using Azin.Shadi.Core.DTOs;
 @using Azin.Shadi.Core.Services.Interfaces;
+@using Azin.Shadi.DAL.Entities.Product;
 @model List<ShowProductViewModel>
 @{
     ViewData["Title"] = "خانه";
     List<ShowProductViewModel> popularProduct = ViewBag.popularProduct as List<ShowProductViewModel> ?? new List<ShowProductViewModel>();
+    List<ProductGroup> productGroups = ViewBag.ProductGroups as List<ProductGroup> ?? new List<ProductGroup>();
 }
 
 @section MetaTag{
@@ -48,6 +50,19 @@
 
 <main id="home-page">
     <div class="container">
+        <section class="group-items">
+            <header>
+                <h2> دسته بندی های آذین </h2>                
+            </header>            
+                <div class="row groups">
+                    @foreach (var productGroup in productGroups.Where(t=>t.ParentId==null))
+                    {
+                        <partial name="ShowProductGroup" model="productGroup" />
+                    }
+                </div>            
+        </section>
+
+        <hr>
         <section class="terms-items">
             <header>
                 <h2> آخرین محصولات آذین </h2>

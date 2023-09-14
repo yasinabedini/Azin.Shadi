@@ -1135,6 +1135,7 @@ main#home-page{
     .term-categories > .top-bar > header > span{
         display: none
     }
+  
 }
 
 @media screen and (max-width : 420px){
@@ -1150,5 +1151,5 @@ main#home-page{
     .comment-list .comment-row .left-col span{
         display: block;
         text-align: center;
-    }
+    }  
 }

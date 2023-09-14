@@ -380,8 +380,14 @@ namespace Azin.Shadi.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("IconName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("ParentId")
                         .HasColumnType("int");
+
+                    b.Property<string>("PictureName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -599,7 +605,7 @@ namespace Azin.Shadi.DAL.Migrations
                             Name = "یاسین عابدینی",
                             Password = "3F-DF-50-75-BD-FF-CD-76-85-D8-46-89-11-FD-CD-C1",
                             ProfileName = "ce7ca676827f42e485b9167a86f19a6f.jpg",
-                            RegisterDate = new DateTime(2023, 9, 7, 20, 36, 0, 956, DateTimeKind.Local).AddTicks(8154),
+                            RegisterDate = new DateTime(2023, 9, 13, 0, 35, 30, 845, DateTimeKind.Local).AddTicks(2801),
                             Username = "2f649a9139"
                         });
                 });

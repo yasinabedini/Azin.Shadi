@@ -13,8 +13,8 @@
 </div>
 
 <div class="row">
-    <form method="post">
-        <div class="col-md-12">
+    <form method="post" enctype="multipart/form-data">
+        <div class="col-md-8">
             <div class="panel panel-success">
                 <div class="panel-heading">
                     اطلاعات دسته بندی
@@ -36,11 +36,54 @@
                             }
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label>نام ایکون : </label>
+                        <input type="text" asp-for="ProductGroup.IconName" class="form-control">
+                    </div>
 
                     <input type="submit" value="ثبت دسته بندی" class="btn btn-success" />
                 </div>
                 <!-- /.panel-body -->
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    تصویر دسته بندی
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <img id="imgAvatar" class="thumbnail" src="~/images/userprofile/default-profile.jpg" />
+                    <div class="form-group">
+                        <label>انتخاب تصویر</label>
+                        <input class="form-control custom-file-input" type="file" name="productGroupPictureUp" id="productGroupPictureUp">
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+
+        </div>
     </form>
 </div>
+
+@section Scripts
+    {
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#productGroupPictureUp").change(function () {
+            readURL(this);
+        });
+    </script>
+}

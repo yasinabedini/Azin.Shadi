@@ -1,0 +1,7 @@
+﻿@using Azin.Shadi.DAL.Entities.Product;
+@model ProductGroup
+
+<a href="/Product?pageId=1&selectedGroups=@Model.Id" class="group-item">
+    <img src="/images/ProductGroup/@Model.PictureName"/>
+    <p>@Model.Title</p>
+</a>

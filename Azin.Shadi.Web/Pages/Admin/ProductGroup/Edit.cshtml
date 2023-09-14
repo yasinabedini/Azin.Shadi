@@ -1,4 +1,102 @@
-﻿@page
+﻿@page "{id}"
+@using Azin.Shadi.Core.Services.Interfaces;
 @model Azin.Shadi.Web.Pages.Admin.ProductGroup.EditModel
 @{
+}
+
+@inject IProductService _productService;
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">ویرایش دسته بندی</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="ProductGroup.Id" />
+        <input type="hidden" asp-for="ProductGroup.PictureName" />
+        <div class="col-md-8">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    اطلاعات دسته بندی
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>عنوان دسته بندی : </label>
+                        <input type="text" asp-for="ProductGroup.Title" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>دسته بندی اصلی :  </label>
+                        <select class="form-control" asp-for="ProductGroup.ParentId">
+                            @if (Model.ProductGroup.ParentId == null)
+                            {
+                                <option selected value="">این دسته بندی یک دسته بندی اصلی است</option>
+                            }
+
+                            @foreach (var productGroup in _productService.GetProductGroups().Where(t => t.ParentId == null))
+                            {
+                                if (productGroup.Id==Model.ProductGroup.ParentId)
+                                {
+                                    <option selected value="@productGroup.Id">@productGroup.Title</option>
+                                }
+                                else
+                                {
+                                    <option value="@productGroup.Id">@productGroup.Title</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>نام ایکون : </label>
+                        <input type="text" asp-for="ProductGroup.IconName" class="form-control">
+                    </div>
+
+                    <input type="submit" value="ثبت دسته بندی" class="btn btn-success" />
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    تصویر دسته بندی
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <img id="imgAvatar" class="thumbnail" src="~/images/ProductGroup/@Model.ProductGroup.PictureName" />
+                    <div class="form-group">
+                        <label>انتخاب تصویر</label>
+                        <input class="form-control custom-file-input" type="file" name="productGroupPictureUp" id="productGroupPictureUp">
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+
+        </div>
+    </form>
+</div>
+
+@section Scripts
+    {
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#productGroupPictureUp").change(function () {
+            readURL(this);
+        });
+    </script>
 }

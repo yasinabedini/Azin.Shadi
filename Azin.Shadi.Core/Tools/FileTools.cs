@@ -12,7 +12,7 @@ namespace Azin.Shadi.Core.Tools
 {
     public static class FileTools
     {
-        public static void SaveImage(IFormFile profileImage,string imageName,string whichFolder,bool thumbSave)
+        public static void SaveImage(IFormFile profileImage, string imageName, string whichFolder, bool thumbSave)
         {
             string imagePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\{whichFolder}", imageName);
             using (var stream = new FileStream(imagePath, FileMode.Create))
@@ -21,10 +21,13 @@ namespace Azin.Shadi.Core.Tools
             }
 
             //save ThumbNail
-            string thumbImagePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\{whichFolder}\\Thumb", imageName);
-            ImageConvertor imageConvertor = new ImageConvertor();
-            imageConvertor.Image_resize(imagePath, thumbImagePath, 200);
-                                                    
+            if (thumbSave)
+            {
+                string thumbImagePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\{whichFolder}\\Thumb", imageName);
+                ImageConvertor imageConvertor = new ImageConvertor();
+                imageConvertor.Image_resize(imagePath, thumbImagePath, 400);
+
+            }
         }
 
         public static void DeleteFile(string path)

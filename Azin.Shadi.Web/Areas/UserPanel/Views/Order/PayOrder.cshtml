@@ -51,7 +51,7 @@
                                             موجودی کیف پول : @Model.UserWalletBalance تومان
                                             @if (Model.UserWalletBalance < Model.SumPrice)
                                             {
-                                                <a href="https://localhost:7184/userpanel/WalletRecharge" class="text-danger">(لطفا کیف پول خود را شارژ کنید)</a>
+                                                <a asp-area="userpanel" asp-controller="Wallet" asp-action="WalletRecharge" class="text-danger">(لطفا کیف پول خود را شارژ کنید)</a>
                                             }
                                         </p>
                                         <hr />

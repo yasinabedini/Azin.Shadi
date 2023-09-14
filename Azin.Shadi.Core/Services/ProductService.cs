@@ -200,7 +200,7 @@ public class ProductService : IProductService
         }).ToList();
     }
 
-    public void UpdatePeoduct(Product product, IFormFile productImageUp)
+    public void UpdateProduct(Product product, IFormFile productImageUp)
     {
         if (productImageUp != null && productImageUp.IsImage())
         {
@@ -271,10 +271,58 @@ public class ProductService : IProductService
         }).ToList();
     }
 
-    public void AddProductGroup(ProductGroup productGroup)
+    public void AddProductGroup(ProductGroup productGroup, IFormFile productGroupPicture)
     {
+        productGroup.PictureName = "Defaul-Image.jpeg";
+        if (productGroupPicture != null && productGroupPicture.IsImage())
+        {
+            string imageName = Generator.CreateUniqueText() + Path.GetExtension(productGroupPicture.FileName);
+            productGroup.PictureName = imageName;
+
+            FileTools.SaveImage(productGroupPicture, imageName, "ProductGroup", true);
+
+        }
+
         _context.ProductGroups.Add(productGroup);
         _context.SaveChanges();
+    }
+
+    public ProductGroup GetProductGroupById(int id)
+    {
+        return _context.ProductGroups.First(t => t.Id == id);
+    }
+
+    public void UpdateProductGroup(ProductGroup productGroup, IFormFile productGroupPicture)
+    {
+        if (productGroupPicture != null && productGroupPicture.IsImage())
+        {
+            string imageName = Generator.CreateUniqueText() + Path.GetExtension(productGroupPicture.FileName);
+
+            if (productGroup.PictureName != "Default.jpeg")
+            {
+                string deletePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\productGroup", productGroup.PictureName);
+                FileTools.DeleteFile(deletePath);
+
+                deletePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\productGroup\\Thumb", productGroup.PictureName);
+                FileTools.DeleteFile(deletePath);
+            }
+
+            FileTools.SaveImage(productGroupPicture, imageName, "productGroup", true);
+            productGroup.PictureName = imageName;
+        }
+
+        _context.ProductGroups.Update(productGroup);
+        _context.SaveChanges();
+    }
+
+    public int GetFirstProductGroupId()
+    {
+        return _context.Products.First().Id;
+    }
+
+    public List<ProductGroup> GetProductGroupsByParentId(int parentId)
+    {
+        return _context.ProductGroups.Where(t => t.ParentId == parentId).ToList();
     }
 }
 

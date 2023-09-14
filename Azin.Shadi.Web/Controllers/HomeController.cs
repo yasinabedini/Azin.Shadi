@@ -1,5 +1,6 @@
 ﻿using Azin.Shadi.Core.Services;
 using Azin.Shadi.Core.Services.Interfaces;
+using Azin.Shadi.Core.Tools;
 using Azin.Shadi.DAL.Entities.Forward;
 using Azin.Shadi.DAL.Entities.Order;
 using Azin.Shadi.DAL.Entities.Transaction;
@@ -8,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Configuration;
 
 namespace Azin.Shadi.Web.Controllers
-{
+{    
     public class HomeController : Controller
     {
         private readonly IUserService _userService;
@@ -21,8 +22,10 @@ namespace Azin.Shadi.Web.Controllers
             _ProductService = productService;
             _orderService = orderService;
         }
+        
         public IActionResult Index()
         {
+            ViewBag.ProductGroups = _ProductService.GetProductGroups();
             ViewBag.popularProduct = _ProductService.GetPopularProducts();
             return View(_ProductService.GetProducts(orderByCreateDate:true));
         }

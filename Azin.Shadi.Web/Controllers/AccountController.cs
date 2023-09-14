@@ -82,9 +82,10 @@ namespace Azin.Shadi.Web.Controllers
                     var principal = new ClaimsPrincipal(identity);
                     var properties = new AuthenticationProperties
                     {
-                        IsPersistent = user.RemmemberMe
+                        IsPersistent = user.RemmemberMe,
+                        AllowRefresh = user.RemmemberMe
                     };
-                    HttpContext.SignInAsync(principal, properties);
+                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, properties);
 
                     ViewBag.IsSuccess = true;
 

@@ -8,9 +8,13 @@
 
 	<ItemGroup>
 		<Compile Remove="wwwroot\css\bootstrap-icons-1.10.5\**" />
+		<Compile Remove="wwwroot\images\ProductGroup\**" />
 		<Content Remove="wwwroot\css\bootstrap-icons-1.10.5\**" />
+		<Content Remove="wwwroot\images\ProductGroup\**" />
 		<EmbeddedResource Remove="wwwroot\css\bootstrap-icons-1.10.5\**" />
+		<EmbeddedResource Remove="wwwroot\images\ProductGroup\**" />
 		<None Remove="wwwroot\css\bootstrap-icons-1.10.5\**" />
+		<None Remove="wwwroot\images\ProductGroup\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -32,6 +36,8 @@
 		<None Include="wwwroot\css\bootstrap.rtl.min.css.map" />
 		<None Include="wwwroot\css\fonts\Material-Design-Iconic-Font.svg" />
 		<None Include="wwwroot\css\fonts\Material-Design-Iconic-Font.woff2" />
+		<None Include="wwwroot\images\status-delivered.svg" />
+		<None Include="wwwroot\images\status-processing.svg" />
 		<None Include="wwwroot\js\bootstrap.bundle.js" />
 		<None Include="wwwroot\js\bootstrap.bundle.js.map" />
 		<None Include="wwwroot\js\bootstrap.bundle.min.js" />
@@ -96,6 +102,7 @@
 	<ItemGroup>
 		<Folder Include="wwwroot\images\Product\Thumb\" />
 		<Folder Include="wwwroot\images\UserProfile\Thumb\" />
+		<Folder Include="wwwroot\images\ProductGroup\Thumb\" />
 	</ItemGroup>
 
 </Project>
